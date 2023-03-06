@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.staff
+package api.model.staff
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate

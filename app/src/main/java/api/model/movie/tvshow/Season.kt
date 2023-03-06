@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie.tvshow
+package api.model.movie.tvshow
 
 data class Season(
     val number: Int,

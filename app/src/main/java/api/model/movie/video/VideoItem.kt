@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie.video
+package api.model.movie.video
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 

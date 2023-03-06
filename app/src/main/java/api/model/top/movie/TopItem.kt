@@ -1,8 +1,8 @@
-package com.truedev.kinoposk.api.model.top.movie
+package api.model.top.movie
 
+import api.model.common.Country
+import api.model.common.Genre
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.truedev.kinoposk.api.model.common.Country
-import com.truedev.kinoposk.api.model.common.Genre
 
 data class TopItem(
     @JsonProperty("filmId")

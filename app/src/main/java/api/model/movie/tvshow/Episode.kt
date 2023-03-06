@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie.tvshow
+package api.model.movie.tvshow
 
 import java.time.LocalDate
 

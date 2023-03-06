@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie.studio
+package api.model.movie.studio
 
 data class StudioItem(
     val name: String,

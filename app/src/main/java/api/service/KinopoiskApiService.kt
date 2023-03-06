@@ -1,28 +1,28 @@
-package com.truedev.kinoposk.api.service
+package api.service
 
-import com.truedev.kinoposk.api.model.Result
-import com.truedev.kinoposk.api.model.movie.AppendType
-import com.truedev.kinoposk.api.model.movie.Film
-import com.truedev.kinoposk.api.model.movie.frames.GalleryResult
-import com.truedev.kinoposk.api.model.movie.related.RelatedFilmItem
-import com.truedev.kinoposk.api.model.movie.studio.StudioResult
-import com.truedev.kinoposk.api.model.movie.video.VideoResult
-import com.truedev.kinoposk.api.model.search.movie.keyword.SearchResult
-import com.truedev.kinoposk.api.model.staff.Person
-import com.truedev.kinoposk.api.model.staff.StaffItem
-import com.truedev.kinoposk.api.model.top.movie.TopResult
-import com.truedev.kinoposk.api.model.top.movie.TopType
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_FILM
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_FRAMES
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_SEQUELS_AND_PREQUELS
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_STAFF
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_STUDIOS
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_TOP
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.GET_VIDEOS
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.MAIN_API_URL_V1
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.MAIN_API_URL_V2_1
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.MAIN_API_URL_V2_2
-import com.truedev.kinoposk.api.service.KPApiClientService.Companion.SEARCH_BY_KEYWORD
+import api.model.movie.AppendType
+import api.model.movie.Film
+import api.model.movie.frames.GalleryResult
+import api.model.movie.related.RelatedFilmItem
+import api.model.movie.studio.StudioResult
+import api.model.movie.video.VideoResult
+import api.model.search.movie.keyword.SearchResult
+import api.model.staff.Person
+import api.model.staff.StaffItem
+import api.model.top.movie.TopResult
+import api.model.top.movie.TopType
+import api.model.Result
+import api.service.KPApiClientService.Companion.GET_FILM
+import api.service.KPApiClientService.Companion.GET_FRAMES
+import api.service.KPApiClientService.Companion.GET_SEQUELS_AND_PREQUELS
+import api.service.KPApiClientService.Companion.GET_STAFF
+import api.service.KPApiClientService.Companion.GET_STUDIOS
+import api.service.KPApiClientService.Companion.GET_TOP
+import api.service.KPApiClientService.Companion.GET_VIDEOS
+import api.service.KPApiClientService.Companion.MAIN_API_URL_V1
+import api.service.KPApiClientService.Companion.MAIN_API_URL_V2_1
+import api.service.KPApiClientService.Companion.MAIN_API_URL_V2_2
+import api.service.KPApiClientService.Companion.SEARCH_BY_KEYWORD
 
 class KinopoiskApiService(token: String, timeoutMs: Int = 15000) {
     private val kpApiClientService: KPApiClientService = KPApiClientService(token, timeoutMs)

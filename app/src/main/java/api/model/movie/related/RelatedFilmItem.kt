@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie.related
+package api.model.movie.related
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

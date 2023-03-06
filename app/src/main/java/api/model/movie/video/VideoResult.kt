@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie.video
+package api.model.movie.video
 
 data class VideoResult(
     val trailers: List<VideoItem> = emptyList(),

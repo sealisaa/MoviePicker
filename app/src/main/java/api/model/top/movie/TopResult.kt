@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.top.movie
+package api.model.top.movie
 
 data class TopResult(
     val pagesCount: Int = 0,

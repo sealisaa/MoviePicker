@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.staff
+package api.model.staff
 
 enum class Profession {
     WRITER,

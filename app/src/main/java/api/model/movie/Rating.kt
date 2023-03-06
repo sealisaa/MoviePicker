@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.movie
+package api.model.movie
 
 data class Rating(
     val rating: Double,

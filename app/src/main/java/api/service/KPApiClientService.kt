@@ -1,10 +1,10 @@
-package com.truedev.kinoposk.api.service
+package api.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.github.kittinunf.fuel.httpGet
-import com.truedev.kinoposk.api.model.Result
+import api.model.Result
 // todo add logs
 internal class KPApiClientService(private val token: String, private val timeout: Int) {
     private val mapper: ObjectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())

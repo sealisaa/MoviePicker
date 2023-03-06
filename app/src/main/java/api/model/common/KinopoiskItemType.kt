@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.common
+package api.model.common
 
 enum class KinopoiskItemType {
     FILM, TV_SHOW, UNKNOWN;

@@ -1,9 +1,9 @@
-package com.truedev.kinoposk.api.model.search.movie.keyword
+package api.model.search.movie.keyword
 
+import api.model.common.Country
+import api.model.common.Genre
+import api.model.common.KinopoiskItemType
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.truedev.kinoposk.api.model.common.Country
-import com.truedev.kinoposk.api.model.common.Genre
-import com.truedev.kinoposk.api.model.common.KinopoiskItemType
 
 data class SearchItem(
     @JsonProperty("filmId")

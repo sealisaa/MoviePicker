@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model
+package api.model
 
 sealed class Result<T> {
     abstract fun getOrThrowException(): T

@@ -1,4 +1,4 @@
-package com.truedev.kinoposk.api.model.search.movie.keyword
+package api.model.search.movie.keyword
 
 data class SearchResult(
     val keyword: String?,

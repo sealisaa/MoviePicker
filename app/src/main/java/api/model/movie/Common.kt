@@ -1,10 +1,10 @@
-package com.truedev.kinoposk.api.model.movie
+package api.model.movie
 
+import api.model.common.Country
+import api.model.common.Genre
+import api.model.common.KinopoiskItemType
+import api.model.movie.tvshow.Season
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.truedev.kinoposk.api.model.common.Country
-import com.truedev.kinoposk.api.model.common.Genre
-import com.truedev.kinoposk.api.model.common.KinopoiskItemType
-import com.truedev.kinoposk.api.model.movie.tvshow.Season
 import java.time.LocalDate
 
 data class Common(
