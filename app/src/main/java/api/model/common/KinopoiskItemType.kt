@@ -1,5 +1,5 @@
 package api.model.common
 
 enum class KinopoiskItemType {
-    FILM, TV_SHOW, UNKNOWN;
+    FILM, VIDEO, TV_SERIES, MINI_SERIES, TV_SHOW, UNKNOWN;
 }
