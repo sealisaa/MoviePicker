@@ -1,22 +1,44 @@
 package com.example.moviepicker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import api.service.KinopoiskApiService
-import api.model.Result
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    val kinopoiskApiService = KinopoiskApiService("api token")
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    lateinit var bottomNav : BottomNavigationView
+    val kinopoiskApiService = KinopoiskApiService("468bb0ae-2abc-455d-af87-155b35af4053")
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadFragment(HomeFragment())
+        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> {
+                    loadFragment(HomeFragment())
+                    true
+                }
+                R.id.search -> {
+                    loadFragment(SearchFragment())
+                    true
+                }
+                R.id.profile -> {
+                    loadFragment(ProfileFragment())
+                    true
+                }
 
-        val result = kinopoiskApiService.getFilm(301)
-        when (result) {
-            is Result.Success -> result.getOrNull().data.description?.let { Log.d("My_tag", it) } /*actually null is possible only for Failure*/
-            is Result.Failure -> Log.d("My_tag","NULL:(")/*handle somehow*/
+                else -> {true}
+            }
         }
+
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_layout_main, fragment)
+        transaction.commit()
     }
 }
