@@ -12,6 +12,7 @@ import api.model.staff.StaffItem
 import api.model.top.movie.TopResult
 import api.model.top.movie.TopType
 import api.model.Result
+import api.model.movie.FilmsByFilters
 import api.service.KPApiClientService.Companion.GET_FILM
 import api.service.KPApiClientService.Companion.GET_FRAMES
 import api.service.KPApiClientService.Companion.GET_SEQUELS_AND_PREQUELS
@@ -150,6 +151,26 @@ class KinopoiskApiService(token: String, timeoutMs: Int = 15000) {
             MAIN_API_URL_V1,
             "$GET_STAFF/$kinopoiskId",
             Person::class.java
+        )
+    }
+
+    fun getFilmsByFileters(
+        countryId: Int? = null,
+        genreId: Int? = null,
+        ratingFrom: Int? = null,
+        ratingTo: Int? = null,
+        yearFrom: Int? = null,
+        yearTo: Int? = null,
+        keyword: String? = null,
+        page: Int? = null
+    ): Result<FilmsByFilters> {
+        return kpApiClientService.request(
+            MAIN_API_URL_V2_2,
+            ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (countryId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
+                    "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
+                    "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
+                    "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(1),
+           FilmsByFilters::class.java
         )
     }
 }
