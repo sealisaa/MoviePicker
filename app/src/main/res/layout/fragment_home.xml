@@ -10,6 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
         <TabHost
                 android:id="@+id/tabMenu"
                 android:layout_width="match_parent"
@@ -18,8 +19,7 @@
                 android:theme="@style/HomeTabsTheme"
                 android:layout_marginBottom="24dp"
                 android:paddingLeft="24dp"
-                android:paddingRight="24dp"
-        >
+                android:paddingRight="24dp">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -68,18 +68,24 @@
                 </FrameLayout>
             </LinearLayout>
         </TabHost>
-        <TableLayout
-                app:layout_constraintTop_toBottomOf="@+id/tabMenu"
+<!--        Надо заменить LinearLayout на RecyclerView-->
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
         >
-            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginBottom="16dp"
+            >
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="24dp"
-                >
+                        android:layout_weight="1">
                     <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -98,26 +104,21 @@
                             android:layout_width="88dp"
                             android:text="@string/movie_name"
                             android:textColor="@color/white"
-                            android:textSize="12sp" app:fontFamily="sans-serif bold"
-                    >
+                            android:textSize="12sp" app:fontFamily="sans-serif bold">
                     </TextView>
                     <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="88dp"
                             android:text="1999"
                             android:textColor="@color/mild_yellow"
-                            android:textSize="10sp" app:fontFamily="sans-serif bold"
-                    >
+                            android:textSize="10sp" app:fontFamily="sans-serif bold">
                     </TextView>
                 </LinearLayout>
                 <LinearLayout
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="24dp"
-                >
+                        android:layout_weight="1">
                     <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -136,26 +137,20 @@
                             android:layout_width="88dp"
                             android:text="@string/movie_name"
                             android:textColor="@color/white"
-                            android:textSize="12sp" app:fontFamily="sans-serif bold"
-                    >
+                            android:textSize="12sp" app:fontFamily="sans-serif bold">
                     </TextView>
                     <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="88dp"
                             android:text="1999"
                             android:textColor="@color/mild_yellow"
-                            android:textSize="10sp" app:fontFamily="sans-serif bold"
-                    >
+                            android:textSize="10sp" app:fontFamily="sans-serif bold">
                     </TextView>
                 </LinearLayout>
                 <LinearLayout
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="24dp"
-                >
+                        android:orientation="vertical">
                     <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -174,22 +169,121 @@
                             android:layout_width="88dp"
                             android:text="@string/movie_name"
                             android:textColor="@color/white"
-                            android:textSize="12sp" app:fontFamily="sans-serif bold"
-                    >
+                            android:textSize="12sp" app:fontFamily="sans-serif bold">
                     </TextView>
                     <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="88dp"
                             android:text="1999"
                             android:textColor="@color/mild_yellow"
-                            android:textSize="10sp" app:fontFamily="sans-serif bold"
-                    >
+                            android:textSize="10sp" app:fontFamily="sans-serif bold">
                     </TextView>
                 </LinearLayout>
-            </TableRow>
-            <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
-            <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
-            <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
-        </TableLayout>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp">
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                    <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="8dp">
+                        <ImageView
+                                android:orientation="horizontal"
+                                android:layout_width="88dp"
+                                android:layout_height="132dp"
+                                android:src="@drawable/star_wars"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@string/poster">
+                        </ImageView>
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="88dp"
+                            android:text="@string/movie_name"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" app:fontFamily="sans-serif bold">
+                    </TextView>
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="88dp"
+                            android:text="1999"
+                            android:textColor="@color/mild_yellow"
+                            android:textSize="10sp" app:fontFamily="sans-serif bold">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                    <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="8dp">
+                        <ImageView
+                                android:orientation="horizontal"
+                                android:layout_width="88dp"
+                                android:layout_height="132dp"
+                                android:src="@drawable/star_wars"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@string/poster">
+                        </ImageView>
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="88dp"
+                            android:text="@string/movie_name"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" app:fontFamily="sans-serif bold">
+                    </TextView>
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="88dp"
+                            android:text="1999"
+                            android:textColor="@color/mild_yellow"
+                            android:textSize="10sp" app:fontFamily="sans-serif bold">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="8dp">
+                        <ImageView
+                                android:orientation="horizontal"
+                                android:layout_width="88dp"
+                                android:layout_height="132dp"
+                                android:src="@drawable/star_wars"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@string/poster">
+                        </ImageView>
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="88dp"
+                            android:text="@string/movie_name"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" app:fontFamily="sans-serif bold">
+                    </TextView>
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="88dp"
+                            android:text="1999"
+                            android:textColor="@color/mild_yellow"
+                            android:textSize="10sp" app:fontFamily="sans-serif bold">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
