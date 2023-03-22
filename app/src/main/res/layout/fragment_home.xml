@@ -17,6 +17,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 android:theme="@style/HomeTabsTheme"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp">

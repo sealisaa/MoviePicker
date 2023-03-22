@@ -25,6 +25,14 @@
         <item name="android:textSize">14sp</item>
         <item name="textAllCaps">false</item>
     </style>
+    <style name="GenreButtonTheme">
+        <item name="android:textColorPrimary">@color/mild_yellow</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="cornerSizeTopLeft">70%</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
     <style name="Theme.MoviePicker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="Theme.MoviePicker.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>
