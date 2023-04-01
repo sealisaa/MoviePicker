@@ -1,14 +1,26 @@
 package com.example.moviepicker
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 
 
 class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesAdapter.PopularMoviesViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
+        val layoutParams = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT, TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 230f, parent.resources.displayMetrics
+            ).toInt()
+        )
+        layoutParams.rightMargin = 0
+        layoutParams.leftMargin = 0
+        layoutParams.topMargin = 0
+        layoutParams.bottomMargin = 0
+        v.layoutParams = layoutParams;
         return PopularMoviesViewHolder(v)
     }
 
