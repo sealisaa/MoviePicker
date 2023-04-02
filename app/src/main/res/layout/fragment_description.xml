@@ -15,34 +15,37 @@
     >
 
         <ImageView
+                android:id="@+id/poster"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="430dp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="1dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="1dp"
                 android:src="@drawable/star_wars"
-                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/poster"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/poster">
         </ImageView>
         <LinearLayout
+                android:id="@+id/gradientBottom"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="434dp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="1dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="1dp"
                 android:background="@drawable/ic_poster_gradient"
-                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/gradient_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0">
         </LinearLayout>
         <LinearLayout
+                android:id="@+id/gradientTop"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="1dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="1dp"
                 android:background="@drawable/ic_poster_gradient_top"
-                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/gradient_top">
+                app:layout_constraintEnd_toEndOf="parent" >
         </LinearLayout>
         <TextView
                 android:text="@string/title"
@@ -55,36 +58,60 @@
                 android:textSize="24sp"
                 app:layout_constraintHorizontal_bias="0.0" android:textColor="#FFFFFF"/>
         <ImageButton
+                android:id="@+id/backButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/back_button" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_weight="1"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="50dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp" app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/ic_back"
                 android:background="@null"
-                android:layout_marginStart="20dp" tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+                android:layout_marginStart="20dp" tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                android:contentDescription="back button"/>
         <ImageButton
+                android:id="@+id/saveButton"
                 android:text="@string/save"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp" android:id="@+id/save_button" android:layout_weight="1"
+                android:layout_height="0dp" android:layout_weight="1"
                 app:layout_constraintBottom_toTopOf="@+id/movieName"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/ic_save_button" android:contentDescription="@string/save"
                 android:background="@null"
                 tools:ignore="TouchTargetSizeCheck"/>
-        <RatingBar
+        <ImageButton
+                android:id="@+id/shareButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/ratingBar"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_share"
+                android:background="@drawable/ic_shape_button"
+                app:layout_constraintEnd_toStartOf="@+id/saveButton"
+                app:layout_constraintBottom_toBottomOf="@+id/poster" android:contentDescription="TODO"
+                android:layout_marginBottom="7dp" android:layout_marginEnd="7dp" tools:ignore="TouchTargetSizeCheck"/>
+        <ImageButton
+                android:id="@+id/linkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_external_link"
+                android:background="@drawable/ic_shape_button"
+                app:layout_constraintStart_toEndOf="@+id/saveButton"
+                app:layout_constraintBottom_toBottomOf="@+id/poster" android:contentDescription="TODO"
+                android:layout_marginBottom="7dp" android:layout_marginStart="7dp" tools:ignore="TouchTargetSizeCheck"/>
+        <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:color="@color/white"
-
+                android:scaleX="0.75"
+                android:scaleY="0.75"
                 android:rating="5"
                 android:progressTint="@color/mild_yellow"
                 app:layout_constraintTop_toBottomOf="@+id/movieName" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" tools:ignore="SpeakableTextPresentCheck"
         />
         <TextView
+                android:id="@+id/textViewDescription"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/textViewDescription"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp" android:layout_marginTop="15dp"
