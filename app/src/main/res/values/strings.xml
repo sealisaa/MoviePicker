@@ -2,6 +2,7 @@
     <string name="app_name">MoviePicker</string>
     <string name="poster">Poster</string>
     <string name="title">Звёздные войны: Эпизод 1 — Скрытая угроза (1999)</string>
+    <string name="movie_name">Звёздные войны: Эпизод 1 — Скрытая угроза</string>
     <string name="save">Save</string>
     <string name="save_ru">Сохранить</string>
     <string name="home">Home</string>
@@ -140,4 +141,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="top">Топ-250</string>
+    <string name="starWarsYear">1999</string>
 </resources>
