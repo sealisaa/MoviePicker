@@ -18,7 +18,6 @@
             android:background="@color/black"
             app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/mild_yellow"
-            android:paddingTop="24dp"
             android:paddingBottom="24dp"
     />
     <androidx.viewpager2.widget.ViewPager2
