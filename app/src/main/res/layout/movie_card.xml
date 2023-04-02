@@ -3,8 +3,8 @@
              android:layout_width="wrap_content"
              android:layout_height="match_parent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:paddingLeft="16dp"
-             android:paddingRight="16dp"
+             android:paddingLeft="12dp"
+             android:paddingRight="12dp"
 >
     <LinearLayout
             app:layout_constraintTop_toTopOf="parent"
@@ -20,8 +20,8 @@
                 app:cardCornerRadius="8dp">
             <ImageView
                     android:orientation="horizontal"
-                    android:layout_width="88dp"
-                    android:layout_height="132dp"
+                    android:layout_width="96dp"
+                    android:layout_height="144dp"
                     android:src="@drawable/star_wars"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/poster" android:id="@+id/moviePoster">
