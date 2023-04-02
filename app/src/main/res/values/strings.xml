@@ -2,6 +2,7 @@
     <string name="app_name">MoviePicker</string>
     <string name="poster">Poster</string>
     <string name="title">Звёздные войны: Эпизод 1 — Скрытая угроза (1999)</string>
+    <string name="movie_name">Звёздные войны: Эпизод 1 — Скрытая угроза</string>
     <string name="save">Save</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
@@ -11,4 +12,6 @@
         вступает в прямой конфликт с королевой Амидалой, правящей на планете, что приводит к войне. На стороне королевы
         и республики в ней участвуют два рыцаря-джедая: учитель и ученик, Квай-Гон-Джин и Оби-Ван Кеноби
     </string>
+    <string name="top">Топ-250</string>
+    <string name="starWarsYear">1999</string>
 </resources>
