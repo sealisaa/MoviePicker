@@ -7,114 +7,50 @@
              tools:context=".HomeFragment"
              android:background="@color/black">
     <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:orientation="vertical">
-
-        <TabHost
-                android:id="@+id/tabMenu"
-                android:layout_width="match_parent"
+        <Button
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                android:theme="@style/HomeTabsTheme"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp">
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                <HorizontalScrollView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:fillViewport="true"
-                        android:scrollbars="none">
-
-                    <TabWidget
-                            android:id="@android:id/tabs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                </HorizontalScrollView>
-
-                <FrameLayout
-                        android:id="@android:id/tabcontent"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <LinearLayout
-                            android:id="@+id/Популярное"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:id="@+id/Жанры"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:id="@+id/Топ"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-        </TabHost>
-        <LinearLayout
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:orientation="vertical">
-            <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/cartoon"
-                    app:backgroundTint="@null"
-                    android:text="Мультфильмы"
-                    android:theme="@style/GenreButtonTheme"
-                    android:layout_marginBottom="20dp"
-            >
-            </Button>
-            <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/thriller"
-                    app:backgroundTint="@null"
-                    android:text="Триллеры"
-                    android:theme="@style/GenreButtonTheme"
-                    android:layout_marginBottom="20dp"
-            >
-            </Button>
-            <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/comedy"
-                    app:backgroundTint="@null"
-                    android:text="Комедии"
-                    android:theme="@style/GenreButtonTheme"
-                    android:layout_marginBottom="20dp"
-            >
-            </Button>
-            <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/horror"
-                    app:backgroundTint="@null"
-                    android:text="Ужасы"
-                    android:theme="@style/GenreButtonTheme"
-                    android:layout_marginBottom="20dp"
-            >
-            </Button>
-        </LinearLayout>
+                android:background="@drawable/cartoon"
+                app:backgroundTint="@null"
+                android:text="Мультфильмы"
+                android:theme="@style/GenreButtonTheme"
+                android:layout_marginBottom="20dp"
+        >
+        </Button>
+        <Button
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@drawable/thriller"
+                app:backgroundTint="@null"
+                android:text="Триллеры"
+                android:theme="@style/GenreButtonTheme"
+                android:layout_marginBottom="20dp"
+        >
+        </Button>
+        <Button
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@drawable/comedy"
+                app:backgroundTint="@null"
+                android:text="Комедии"
+                android:theme="@style/GenreButtonTheme"
+                android:layout_marginBottom="20dp"
+        >
+        </Button>
+        <Button
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@drawable/horror"
+                app:backgroundTint="@null"
+                android:text="Ужасы"
+                android:theme="@style/GenreButtonTheme"
+                android:layout_marginBottom="20dp"
+        >
+        </Button>
     </LinearLayout>
 </FrameLayout>

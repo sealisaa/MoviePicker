@@ -13,12 +13,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadFragment(PopularMoviesFragment())
+        loadFragment(HomeFragment())
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    loadFragment(PopularMoviesFragment())
+                    loadFragment(HomeFragment())
                     true
                 }
                 R.id.search -> {
