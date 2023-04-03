@@ -14,4 +14,26 @@
         <!-- Customize your theme here. -->
 
     </style>
+    <style name="Theme.MoviePicker.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="HomeTabsTheme">
+        <item name="android:textColorPrimary">@color/mild_yellow</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="colorAccent">@color/mild_yellow</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="GenreButtonTheme">
+        <item name="android:textColorPrimary">@color/mild_yellow</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="cornerSizeTopLeft">70%</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Theme.MoviePicker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.MoviePicker.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>
