@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             tools:context=".HorizontalMovieCard">
+    <androidx.cardview.widget.CardView
+            android:layout_width="360dp"
+            android:layout_height="match_parent" app:cardBackgroundColor="@color/movie_card_color"
+            app:cardCornerRadius="8dp" android:layout_gravity="center" android:layout_margin="10dp">
+        <ImageView
+                android:src="@drawable/the_grand_budapest_hotel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/moviePoster"
+                android:layout_margin="10dp"
+        />
+        <TextView
+                android:text="Отель «Гранд Будапешт»"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/movieTitle"
+                android:textStyle="bold" android:textColor="@color/white"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="10dp"/>
+        <TextView
+                android:text="Уэс Андерсон"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/directorName"
+                android:textColor="@color/white"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="30dp"/>
+        <ImageView
+                android:src="@drawable/ic_rating_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView2"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="55dp"
+        />
+        <TextView
+                android:text="8.1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView2"
+                android:textColor="@color/mild_yellow"
+                android:textSize="14sp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="52dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView5" android:layout_marginTop="105dp"
+                android:layout_marginStart="100dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView6" android:layout_marginTop="105dp"
+                android:layout_marginStart="107dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView7" android:layout_marginTop="105dp"
+                android:layout_marginStart="114dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView8" android:layout_marginTop="105dp"
+                android:layout_marginStart="121dp"/>
+        <ImageView
+                android:src="@drawable/ic_golden_globe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView9" android:layout_marginStart="150dp"
+                android:layout_marginTop="105dp"/>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
