@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import api.model.Movie
-import com.example.moviepicker.databinding.FragmentProfileBinding
+import com.example.moviepicker.databinding.FragmentSearchResultBinding
 
 
-class ProfileFragment : Fragment() {
+class SearchResultFragment : Fragment() {
 
-    private lateinit var bind: FragmentProfileBinding
+    private lateinit var bind: FragmentSearchResultBinding
     private val adapter = HorizontalMovieCardAdapter()
     private val imageIdList = listOf(
         R.drawable.the_grand_budapest_hotel
@@ -23,10 +23,10 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bind = FragmentProfileBinding.inflate(inflater)
+        bind = FragmentSearchResultBinding.inflate(inflater)
         bind.apply {
-            moviesRecyclerView.layoutManager = LinearLayoutManager(activity)
-//            moviesRecyclerView.layoutManager = GridLayoutManager(activity , 1)
+//            moviesRecyclerView.layoutManager = LinearLayoutManager(this@SearchResultFragment.context)
+            moviesRecyclerView.layoutManager = GridLayoutManager(activity , 1)
             moviesRecyclerView.adapter = adapter
             for (i in 1..6) {
                 val movie = Movie(imageIdList[index], "Отель «Гранд Будапешт»", "Уэс Андерсон")
