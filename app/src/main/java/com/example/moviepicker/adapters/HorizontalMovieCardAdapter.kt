@@ -1,10 +1,11 @@
-package com.example.moviepicker
+package com.example.moviepicker.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import api.model.Movie
+import com.example.moviepicker.R
 import com.example.moviepicker.databinding.HorizontalMovieCardBinding
 
 class HorizontalMovieCardAdapter : RecyclerView.Adapter<HorizontalMovieCardAdapter.HorizontalCardMovieHolder>() {

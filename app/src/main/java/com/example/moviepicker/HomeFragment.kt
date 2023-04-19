@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
+import com.example.moviepicker.adapters.HomeViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -20,11 +21,16 @@ class HomeFragment : Fragment() {
         listOfTitles.add("Топ-250")
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadTitles()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        loadTitles()
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         viewPager = view.findViewById(R.id.homeViewPager)
         val pagerAdapter = HomeViewPagerAdapter(this, listOfTitles)
