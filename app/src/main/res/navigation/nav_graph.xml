@@ -24,11 +24,28 @@
     <fragment android:id="@+id/searchFragment"
               android:name="com.example.moviepicker.SearchFragment"
               android:label="fragment_search"
-              tools:layout="@layout/fragment_search"/>
+              tools:layout="@layout/fragment_search">
+        <action android:id="@+id/action_searchFragment_to_filtersFragment" app:destination="@id/filtersFragment"/>
+        <action android:id="@+id/action_searchFragment_to_searchResultFragment"
+                app:destination="@id/searchResultFragment"/>
+    </fragment>
 
     <fragment android:id="@+id/profileFragment"
               android:name="com.example.moviepicker.ProfileFragment"
               android:label="ProfileFragment"
-              tools:layout="@layout/fragment_profile"/>
+              tools:layout="@layout/fragment_profile">
+        <action android:id="@+id/action_profileFragment_to_settingsFragment" app:destination="@id/settingsFragment"/>
+        <action android:id="@+id/action_profileFragment_to_descriptionFragment"
+                app:destination="@id/descriptionFragment"/>
+    </fragment>
+    <fragment android:id="@+id/filtersFragment" android:name="com.example.moviepicker.FiltersFragment"
+              android:label="fragment_filters" tools:layout="@layout/fragment_filters">
+        <action android:id="@+id/action_filtersFragment_to_searchResultFragment"
+                app:destination="@id/searchResultFragment"/>
+    </fragment>
+    <fragment android:id="@+id/searchResultFragment" android:name="com.example.moviepicker.SearchResultFragment"
+              android:label="fragment_search_result" tools:layout="@layout/fragment_search_result"/>
+    <fragment android:id="@+id/settingsFragment" android:name="com.example.moviepicker.SettingsFragment"
+              android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
 
 </navigation>

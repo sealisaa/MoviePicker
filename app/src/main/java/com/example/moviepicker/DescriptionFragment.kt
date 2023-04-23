@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 
 /**
@@ -23,11 +24,11 @@ class DescriptionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_description, container, false)
         val backButton : AppCompatImageButton = view.findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            this.activity?.onBackPressedDispatcher?.onBackPressed()
+//            this.activity?.onBackPressedDispatcher?.onBackPressed()
+            findNavController().popBackStack()
         }
         return view
     }
