@@ -1,10 +1,11 @@
-package com.example.moviepicker
+package com.example.moviepicker.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moviepicker.R
 
 
 class GenresAdapter : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
@@ -18,7 +19,7 @@ class GenresAdapter : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
         R.drawable.horror
     )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenresAdapter.GenresViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenresViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.genre_card, parent, false)
         return GenresViewHolder(v)
     }

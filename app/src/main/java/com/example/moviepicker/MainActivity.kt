@@ -2,43 +2,31 @@ package com.example.moviepicker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import api.service.KinopoiskApiService
+import com.example.moviepicker.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var bottomNav : BottomNavigationView
+    private lateinit var binding: ActivityMainBinding
     val kinopoiskApiService = KinopoiskApiService("468bb0ae-2abc-455d-af87-155b35af4053")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        loadFragment(HomeFragment())
-        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.home -> {
-                    loadFragment(HomeFragment())
-                    true
-                }
-                R.id.search -> {
-                    loadFragment(SearchFragment())
-                    true
-                }
-                R.id.profile -> {
-                    loadFragment(ProfileFragment())
-                    true
-                }
 
-                else -> {true}
-            }
-        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val bottomNav: BottomNavigationView = binding.bottomNavigationView
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController: NavController = navHostFragment.navController
+
+        bottomNav.setupWithNavController(navController)
 
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.frame_layout_main, fragment)
-        transaction.commit()
-    }
 }

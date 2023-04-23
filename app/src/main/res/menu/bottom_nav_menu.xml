@@ -2,11 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/home"
     android:icon="@drawable/ic_home"
-    android:id="@+id/home"/>
+    android:id="@+id/homeFragment"/>
+
     <item android:title="@string/search"
     android:icon="@drawable/ic_search"
-    android:id="@+id/search"/>
+    android:id="@+id/searchFragment"/>
+
     <item android:title="@string/profile"
     android:icon="@drawable/ic_profile"
-    android:id="@+id/profile"/>
+    android:id="@+id/profileFragment"/>
 </menu>

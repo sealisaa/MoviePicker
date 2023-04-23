@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import api.model.Movie
+import com.example.moviepicker.adapters.HorizontalMovieCardAdapter
 import com.example.moviepicker.databinding.FragmentSearchResultBinding
 
 

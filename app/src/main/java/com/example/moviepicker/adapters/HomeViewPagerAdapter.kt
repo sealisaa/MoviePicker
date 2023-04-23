@@ -1,7 +1,9 @@
-package com.example.moviepicker
+package com.example.moviepicker.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.moviepicker.GenresFragment
+import com.example.moviepicker.PopularMoviesFragment
 
 class HomeViewPagerAdapter(fragment: Fragment, private val listOfTitle: List<String>) :
     FragmentStateAdapter(fragment) {

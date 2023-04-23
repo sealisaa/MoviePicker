@@ -1,16 +1,21 @@
-package com.example.moviepicker
+package com.example.moviepicker.adapters
 
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import api.model.movie.Film
+import com.example.moviepicker.R
+import java.util.LinkedList
 
 
-class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
+class PopularMoviesAdapter(val fragment: Fragment) : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
+    var popularMovies = LinkedList<Film>(loadPopularMovies())
     var popularMoviesTitles = arrayOf(
         "Звёздные войны: Эпизод 1 — Скрытая угроза",
         "Работа без авторства", "Список Шиндлера", "Великий Гэтсби",
@@ -44,13 +49,16 @@ class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMo
         R.drawable.poster7, R.drawable.poster8, R.drawable.poster9
     )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesAdapter.PopularMoviesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.vertical_movie_card, parent, false)
         return PopularMoviesViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: PopularMoviesAdapter.PopularMoviesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PopularMoviesViewHolder, position: Int) {
         holder.bindView(position)
+        holder.movieCard.setOnClickListener {
+            fragment.findNavController().navigate(R.id.descriptionFragment)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -59,14 +67,17 @@ class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMo
 
     inner class PopularMoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var titleView: TextView
-        var yearView: TextView
-        var posterView: ImageView
+        val titleView: TextView
+        val yearView: TextView
+        val posterView: ImageView
+        val movieCard: LinearLayout
+
 
         init {
             titleView = itemView.findViewById(R.id.movieTitle)
             yearView = itemView.findViewById(R.id.movieYear)
             posterView = itemView.findViewById(R.id.moviePoster)
+            movieCard = itemView.findViewById(R.id.movieCard)
         }
 
         fun bindView(position: Int) {
@@ -74,5 +85,9 @@ class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMo
             yearView.text = popularMoviesYears[position]
             posterView.setImageResource(popularMoviesPosters[position])
         }
+    }
+
+    private fun loadPopularMovies() : List<Film> {
+        return emptyList()
     }
 }
