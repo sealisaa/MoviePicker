@@ -54,7 +54,7 @@ class LocaleTest : TestCase() {
                     hasText("Мои фильмы")
                 }
                 textViewStatistics {
-                    hasText("Статистика")
+                    containsText("Добавлено")
                 }
                 textViewAdded {
                     hasText("Избранное")
