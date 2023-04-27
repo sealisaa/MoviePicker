@@ -1,17 +1,15 @@
-package com.example.moviepicker.screens
+package com.example.moviepicker.pages
 
 import android.view.View
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.example.moviepicker.R
 import com.kaspersky.kaspresso.screens.KScreen
-import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
 import org.hamcrest.Matcher
 
 object GenresScreen : KScreen<GenresScreen>() {
-    override val layoutId: Int?
+    override val layoutId: Int
         get() = R.layout.fragment_genres
     override val viewClass: Class<*>?
         get() = null
@@ -22,8 +20,6 @@ object GenresScreen : KScreen<GenresScreen>() {
     )
 
     class GenreScreen(matcher: Matcher<View>): KRecyclerItem<GenresScreen>(matcher) {
-        val genreContainer = KView(matcher) { withId(R.id.genreContainer) }
         val genreButton = KButton(matcher) { withId(R.id.genreButton) }
     }
-
 }

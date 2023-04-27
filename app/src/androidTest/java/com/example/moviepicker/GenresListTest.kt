@@ -1,8 +1,8 @@
 package com.example.moviepicker
 
 import androidx.test.ext.junit.rules.activityScenarioRule
-import com.example.moviepicker.screens.GenresScreen
-import com.example.moviepicker.screens.HomeScreen
+import com.example.moviepicker.pages.GenresScreen
+import com.example.moviepicker.pages.HomeScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Assert
 import org.junit.Rule
@@ -23,7 +23,7 @@ class GenresListTest : TestCase() {
     fun checkGenresScreen() = run {
         step("Open genres screen") {
             HomeScreen {
-                goToGenres()
+                goToGenresTab()
             }
         }
         step("Check genres count") {
