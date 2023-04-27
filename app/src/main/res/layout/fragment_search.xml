@@ -90,6 +90,6 @@
                 android:textColor="@color/white"
                 android:background="@null"
                 android:ems="10"
-                android:id="@+id/editTextTextPersonName" android:layout_weight="1" android:importantForAutofill="no"/>
+                android:id="@+id/editTextSearch" android:layout_weight="1" android:importantForAutofill="no"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,8 @@ class ProfileFragment : Fragment() {
                 adapter.addItem(movie)
             }
         }
+        val statistics = "Добавлено ${adapter.itemCount} фильмов"
+        binding.textViewStatistics.setText(statistics)
         return binding.root
     }
 
