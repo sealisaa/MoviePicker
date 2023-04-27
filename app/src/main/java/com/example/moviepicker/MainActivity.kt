@@ -8,6 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import api.service.KinopoiskApiService
 import com.example.moviepicker.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.paperdb.Paper
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,12 +21,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val bottomNav: BottomNavigationView = binding.bottomNavigationView
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController: NavController = navHostFragment.navController
-
         bottomNav.setupWithNavController(navController)
+
+        Paper.init(this)
+
+
+    }
+
+    private fun initialize() {
 
     }
 
