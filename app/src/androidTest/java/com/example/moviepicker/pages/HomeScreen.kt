@@ -12,6 +12,8 @@ import org.hamcrest.Matcher
 
 
 object HomeScreen : KScreen<HomeScreen>() {
+    private val genresTabId = 1
+
     override val layoutId
         get() = R.layout.fragment_home
     override val viewClass: Class<*>?
@@ -30,7 +32,7 @@ object HomeScreen : KScreen<HomeScreen>() {
     }
 
     fun goToGenresTab() {
-        this.tabLayout.selectTab(1)
+        this.tabLayout.selectTab(genresTabId)
     }
 
     fun goToMovieDescription(index: Int) {

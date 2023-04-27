@@ -34,7 +34,7 @@ class GenresListTest : TestCase() {
         step("Check genres list") {
             GenresScreen {
                 rvGenres {
-                    for (i in 1 until genres.size) {
+                    for (i in genres.indices) {
                         childAt<GenresScreen.GenreScreen>(i) {
                             genreButton.isVisible()
                             genreButton.hasText(genres[i])
