@@ -24,7 +24,7 @@ class GenresFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_genres, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.genresRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = GenresAdapter()
+        recyclerView.adapter = GenresAdapter(this)
         return view
     }
 }
