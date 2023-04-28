@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moviepicker.adapters.PopularMoviesAdapter
+import com.example.moviepicker.adapters.VerticalMovieCardAdapter
 
 class PopularMoviesFragment : Fragment() {
 
@@ -19,7 +19,7 @@ class PopularMoviesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_popular_movies, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.popularMoviesRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(activity, 3)
-        recyclerView.adapter = PopularMoviesAdapter(this)
+        recyclerView.adapter = VerticalMovieCardAdapter(this)
 
         return view
     }

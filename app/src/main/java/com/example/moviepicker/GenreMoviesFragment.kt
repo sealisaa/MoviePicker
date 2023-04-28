@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moviepicker.adapters.PopularMoviesAdapter
+import com.example.moviepicker.adapters.VerticalMovieCardAdapter
 
 class GenreMoviesFragment : Fragment() {
     override fun onCreateView(
@@ -24,7 +24,7 @@ class GenreMoviesFragment : Fragment() {
         }
         val recyclerView = view.findViewById<RecyclerView>(R.id.genreMoviesRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(activity, 3)
-        recyclerView.adapter = PopularMoviesAdapter(this)
+        recyclerView.adapter = VerticalMovieCardAdapter(this)
 
         return view
     }

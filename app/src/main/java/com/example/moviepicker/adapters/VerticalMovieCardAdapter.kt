@@ -14,7 +14,7 @@ import com.example.moviepicker.R
 import java.util.LinkedList
 
 
-class PopularMoviesAdapter(val fragment: Fragment) : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
+class VerticalMovieCardAdapter(val fragment: Fragment) : RecyclerView.Adapter<VerticalMovieCardAdapter.PopularMoviesViewHolder>() {
     var popularMovies = LinkedList<Film>(loadPopularMovies())
     var popularMoviesTitles = arrayOf(
         "Звёздные войны: Эпизод 1 — Скрытая угроза",
