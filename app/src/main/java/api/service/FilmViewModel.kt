@@ -9,6 +9,7 @@ class FilmViewModel(private val filmRepository: FilmDetailsRepository, filmId: I
 
     private val compositeDisposable = CompositeDisposable()
 
+
     val movieDetails: LiveData<Film> by lazy {
         filmRepository.fetchFilmDetails(compositeDisposable, filmId)
     }
