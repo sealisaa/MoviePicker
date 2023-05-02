@@ -15,7 +15,6 @@ import java.util.LinkedList
 
 
 class PopularMoviesAdapter(val fragment: Fragment) : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
-    var popularMovies = LinkedList<Film>(loadPopularMovies())
     var popularMoviesTitles = arrayOf(
         "Звёздные войны: Эпизод 1 — Скрытая угроза",
         "Работа без авторства", "Список Шиндлера", "Великий Гэтсби",
@@ -87,7 +86,4 @@ class PopularMoviesAdapter(val fragment: Fragment) : RecyclerView.Adapter<Popula
         }
     }
 
-    private fun loadPopularMovies() : List<Film> {
-        return emptyList()
-    }
 }

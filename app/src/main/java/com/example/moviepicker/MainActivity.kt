@@ -2,10 +2,17 @@ package com.example.moviepicker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import api.service.KinopoiskApiService
+import api.model.movie.Film
+import api.service.DBClient
+import api.service.FilmDetailsRepository
+import api.service.FilmViewModel
+import api.service.KPApiService
 import com.example.moviepicker.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.paperdb.Paper
@@ -13,7 +20,11 @@ import io.paperdb.Paper
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    val kinopoiskApiService = KinopoiskApiService("468bb0ae-2abc-455d-af87-155b35af4053")
+
+    //    val kinopoiskApiService = KPApiService("468bb0ae-2abc-455d-af87-155b35af4053")
+    private lateinit var viewModel: FilmViewModel
+    private lateinit var filmRepository: FilmDetailsRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,13 +37,30 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController = navHostFragment.navController
         bottomNav.setupWithNavController(navController)
 
-        Paper.init(this)
+
+        val filmId = 301
+        val apiService: KPApiService = DBClient.getClient()
+        filmRepository = FilmDetailsRepository(apiService)
+
+        viewModel = getViewModel(filmId)
 
 
     }
 
-    private fun initialize() {
+    fun bindUI(it: Film) {
 
+    }
+
+    private fun initialize() {
+        Paper.init(this)
+    }
+
+    private fun getViewModel(filmId: Int): FilmViewModel {
+        return ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return FilmViewModel(filmRepository, filmId) as T
+            }
+        })[FilmViewModel::class.java]
     }
 
 }
