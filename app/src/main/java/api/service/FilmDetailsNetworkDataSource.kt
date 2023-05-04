@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import api.model.movie.Film
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
@@ -28,7 +29,9 @@ class FilmDetailsNetworkDataSource(
         try {
             compositeDisposable.add(
                 apiService.getFilm(kinopoisId)
+                    .observeOn(Schedulers.io())
                     .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
                         {
                             _downloadedFilmResponse.postValue(it)

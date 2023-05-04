@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import api.model.Movie
 import com.example.moviepicker.adapters.HorizontalMovieCardAdapter
 import com.example.moviepicker.databinding.FragmentProfileBinding
+import io.paperdb.Paper
 
 
 class ProfileFragment : Fragment() {

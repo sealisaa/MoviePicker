@@ -31,13 +31,16 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
 //    }
     fun getFilm(kinopoiskId: Int, appendTypes: Iterable<AppendType> = emptyList()): Single<Film> {
         require(kinopoiskId > 0) { "Film id should be more than 0" }
-        val appends = appendTypes.joinToString()
-        val result = kpApiClientService.request(
-            MAIN_API_URL_V2_1,
-            "$GET_FILM/$kinopoiskId?append_to_response=$appends",
-            Film::class.java
-        )
-        return Single.just(result)
+        return Single.fromCallable {
+            val appends = appendTypes.joinToString()
+            val result = kpApiClientService.request(
+                MAIN_API_URL_V2_1,
+                "$GET_FILM/$kinopoiskId?append_to_response=$appends",
+                Film::class.java
+            )
+            result
+        }
+
     }
 
 //    /**
