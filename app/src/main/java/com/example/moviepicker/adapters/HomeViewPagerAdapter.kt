@@ -14,6 +14,7 @@ class HomeViewPagerAdapter(fragment: Fragment, private val listOfTitle: List<Str
         when (position) {
             0 -> return PopularMoviesFragment()
             1 -> return GenresFragment()
+            // тут нужен фрагмент с топ-250
             2 -> return PopularMoviesFragment()
         }
         // заменить на какой-нибудь пустой фрагмент
