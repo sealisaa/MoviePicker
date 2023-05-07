@@ -44,16 +44,26 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView"/>
-        <Spinner
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/languageOptions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/appLanguage"
-                android:background="@drawable/ic_spinner_background"
-                android:entries="@array/languages"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_marginTop="10dp"
-                app:fontFamily="@font/roboto_bold"
-                tools:ignore="TouchTargetSizeCheck"/>
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_language"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                app:boxBackgroundColor="@color/dark_grey" app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopStart="10dp">
+
+            <AutoCompleteTextView
+                    android:text="Русский"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/autoCompleteTextView"
+                    android:inputType="none"
+                    app:boxBackgroundColor="@color/smoke_grey"
+
+                    android:layout_weight="1" android:popupBackground="@drawable/search_field"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
