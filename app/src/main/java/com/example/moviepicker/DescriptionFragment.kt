@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import api.service.FilmDetailsRepository
 import api.service.FilmViewModel
+import api.service.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.databinding.FragmentDescriptionBinding
 
@@ -27,10 +27,6 @@ class DescriptionFragment : Fragment() {
     private val viewModel : FilmViewModel by activityViewModels()
     private lateinit var filmRepository: FilmDetailsRepository
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +40,16 @@ class DescriptionFragment : Fragment() {
 
         viewModel.movieDetails.observe(viewLifecycleOwner) {
             with(binding) {
+                it.data.kinopoiskId
                 movieName.text = it.data.nameRu
                 textViewDescription.text = it.data.description
             }
             Glide.with(this).load(it.data.posterUrl).into(binding.poster)
+        }
+
+        viewModel.networkState.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
+            binding.textViewConnection.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
         }
         return binding.root
     }

@@ -58,7 +58,7 @@
     </string-array>
 
     <string name="key_word">Ключевое слово</string>
-
+    <string name="connection_problem">Возникла проблема с соединением!</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

@@ -59,24 +59,4 @@ internal class KPApiClientService(private val token: String, private val timeout
         }
     }
 
-    fun requestFilm(url: String, path: String, clazz: Class<Film>): ResponseResultOf<String> {
-        return (url + path)
-            .httpGet()
-            .timeout(timeout)
-            .timeoutRead(timeout)
-            .header(mapOf(AUTH_HEADER to token))
-            .responseString()
-//            .rxObject(gsonDeserializerOf(clazz))
-
-//        return when (result) {
-//            is com.github.kittinunf.result.Result.Failure -> Result.Failure(
-//                httpStatus = response.statusCode,
-//                error = response.responseMessage
-//            )
-//            is com.github.kittinunf.result.Result.Success -> Result.Success(
-//                httpStatus = response.statusCode,
-//                result = mapper.readValue(result.get(), clazz)
-//            )
-//        }
-    }
 }

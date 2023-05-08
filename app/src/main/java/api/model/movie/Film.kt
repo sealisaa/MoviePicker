@@ -1,6 +1,6 @@
 package api.model.movie
 
-data class Film(
+data class Film (
     var data: Common,
     var externalId: ExternalId?,
     var rating: Rating?,

@@ -8,6 +8,26 @@
         android:layout_gravity="center_horizontal"
         tools:context=".PopularMoviesFragment"
 >
+    <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content" android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:id="@+id/textViewConnection"
+            android:visibility="gone"
+            android:text="@string/connection_problem"
+            app:fontFamily="sans-serif-bold"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content" android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popularMoviesRecyclerView"
             android:layout_width="wrap_content"

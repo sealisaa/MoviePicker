@@ -8,8 +8,13 @@ import api.model.top.movie.TopType
 import api.model.Result
 import api.model.movie.FilmsByFilters
 import api.service.KPApiClientService.Companion.GET_FILM
+import api.service.KPApiClientService.Companion.GET_TOP
 import api.service.KPApiClientService.Companion.MAIN_API_URL_V2_1
+import api.service.KPApiClientService.Companion.MAIN_API_URL_V2_2
 import io.reactivex.Single
+
+const val FIRST_PAGE = 1
+const val POST_PER_PAGE = 20
 
 class KPApiService(token: String, timeoutMs: Int = 15000) {
     private val kpApiClientService: KPApiClientService = KPApiClientService(token, timeoutMs)
@@ -41,6 +46,22 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
             result
         }
 
+    }
+
+    /**
+     * Returns top by particular top type [TopType].
+     *
+     * @param topType see [TopType].
+     * @param page page.
+     */
+    fun getTop(topType: TopType, page: Int = 1): Single<TopResult> {
+        return Single.fromCallable{
+            kpApiClientService.request(
+                MAIN_API_URL_V2_2,
+                "$GET_FILM$GET_TOP?type=$topType&page=$page",
+                TopResult::class.java
+            )
+        }
     }
 
 //    /**
@@ -99,35 +120,21 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
 //        )
 //    }
 
-    /**
-     * Returns search result by keyword.
-     *
-     * @param keyword keyword to search.
-     * @param page page.
-     */
-    fun searchByKeyword(keyword: String, page: Int = 1): Result<SearchResult>? {
+//    /**
+//     * Returns search result by keyword.
+//     *
+//     * @param keyword keyword to search.
+//     * @param page page.
+//     */
+//    fun searchByKeyword(keyword: String, page: Int = 1): Result<SearchResult> {
 //        return kpApiClientService.request(
 //            MAIN_API_URL_V2_1,
 //            "$GET_FILM$SEARCH_BY_KEYWORD?keyword=$keyword&page=$page",
 //            SearchResult::class.java
 //        )
-        return null
-    }
+//    }
 
-    /**
-     * Returns top by particular top type [TopType].
-     *
-     * @param topType see [TopType].
-     * @param page page.
-     */
-    fun getTop(topType: TopType, page: Int = 1): Result<TopResult>? {
-//        return kpApiClientService.request(
-//            MAIN_API_URL_V2_2,
-//            "$GET_FILM$GET_TOP?type=$topType&page=$page",
-//            TopResult::class.java
-//        )
-        return null
-    }
+
 
 //    /**
 //     * Returns all persons by particular film id.
@@ -175,4 +182,6 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
 //        )
         return null
     }
+
+
 }
