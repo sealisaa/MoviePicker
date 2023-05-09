@@ -2,12 +2,11 @@ package com.example.moviepicker.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import data.api.FilmDetailsRepository
-import data.model.movie.Film
-import data.repository.NetworkState
+import com.example.moviepicker.data.model.movie.Film
+import com.example.moviepicker.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
-class MovieViewModel(private val filmRepository: FilmDetailsRepository, filmId: Int) : ViewModel() {
+class MovieViewModel(private val filmRepository: com.example.moviepicker.data.api.FilmDetailsRepository, filmId: Int) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 

@@ -8,11 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import data.api.DBClient
-import data.api.FilmDetailsRepository
 import com.example.moviepicker.ui.viewmodel.MovieViewModel
-import data.api.KPApiService
-import data.repository.NetworkState
+import com.example.moviepicker.data.api.KPApiService
+import com.example.moviepicker.data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.databinding.FragmentDescriptionBinding
 
@@ -28,7 +26,7 @@ class DescriptionFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel : MovieViewModel
-    private lateinit var filmRepository: FilmDetailsRepository
+    private lateinit var filmRepository: com.example.moviepicker.data.api.FilmDetailsRepository
 
 
     override fun onCreateView(
@@ -41,8 +39,8 @@ class DescriptionFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        val apiService: KPApiService = DBClient.getClient()
-        filmRepository = FilmDetailsRepository(apiService)
+        val apiService: KPApiService = com.example.moviepicker.data.api.DBClient.getClient()
+        filmRepository = com.example.moviepicker.data.api.FilmDetailsRepository(apiService)
 
         viewModel = getViewModel(arguments?.getInt("movieId") ?: -1)
         viewModel.movieDetails.observe(viewLifecycleOwner) {

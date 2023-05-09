@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import data.api.DBClient
-import data.api.KPApiService
+import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
-import data.repository.NetworkState
+import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.adapters.PopularMoviesPagedListAdapter
 import com.example.moviepicker.databinding.FragmentPopularMoviesBinding
 
@@ -33,7 +32,7 @@ class PopularMoviesFragment : Fragment() {
 //        val recyclerView = view.findViewById<RecyclerView>(R.id.popularMoviesRecyclerView)
 //        recyclerView.layoutManager = GridLayoutManager(activity, 3)
 //        recyclerView.adapter = PopularMoviesAdapter(this)
-        val apiService: KPApiService = DBClient.getClient()
+        val apiService: KPApiService = com.example.moviepicker.data.api.DBClient.getClient()
         movieRepository = MoviePagedListRepository(apiService)
 
         viewModel = getViewModel()

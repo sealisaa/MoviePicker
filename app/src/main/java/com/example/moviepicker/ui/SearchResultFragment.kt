@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviepicker.R
-import data.model.Movie
+import com.example.moviepicker.data.model.Movie
 import com.example.moviepicker.adapters.HorizontalMovieCardAdapter
 import com.example.moviepicker.databinding.FragmentSearchResultBinding
 

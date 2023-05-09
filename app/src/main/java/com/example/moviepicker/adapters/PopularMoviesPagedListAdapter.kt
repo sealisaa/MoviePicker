@@ -12,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import data.model.top.movie.TopItem
-import data.repository.NetworkState
+import com.example.moviepicker.data.model.top.movie.TopItem
+import com.example.moviepicker.data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.R
 

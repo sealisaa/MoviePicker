@@ -3,8 +3,8 @@ package com.example.moviepicker.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
-import data.model.top.movie.TopItem
-import data.repository.NetworkState
+import com.example.moviepicker.data.model.top.movie.TopItem
+import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.ui.MoviePagedListRepository
 import io.reactivex.disposables.CompositeDisposable
 
