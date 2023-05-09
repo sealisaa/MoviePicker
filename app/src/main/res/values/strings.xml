@@ -5,10 +5,11 @@
     <string name="movie_name">Звёздные войны: Эпизод 1 — Скрытая угроза</string>
     <string name="save">Save</string>
     <string name="save_ru">Сохранить</string>
-    <string name="home">Home</string>
-    <string name="search">Искать</string>
+    <string name="home">Дом</string>
+    <string name="search">Поиск</string>
     <string name="search_for">Фильмы, сериалы</string>
-    <string name="profile">Profile</string>
+    <string name="profile">Профиль</string>
+    <string name="statistics">Добавлено 0 фильмов</string>
     <string name="settings">Настройки</string>
     <string name="language">Язык</string>
     <string-array name="languages">
