@@ -1,6 +1,7 @@
 package com.example.moviepicker.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import api.model.top.movie.TopItem
-import api.service.repository.NetworkState
+import data.model.top.movie.TopItem
+import data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.R
 
@@ -77,15 +78,17 @@ class PopularMoviesPagedListAdapter(val fragment: Fragment) :
             val title : TextView = itemView.findViewById(R.id.movieTitle)
             val year : TextView = itemView.findViewById(R.id.movieYear)
             val poster : ImageView = itemView.findViewById(R.id.moviePoster)
+            val bundle = Bundle()
 
             title.text = movie?.nameRu
             year.text = movie?.year
             Glide.with(fragment).load(movie?.posterUrl).into(poster)
 
             itemView.setOnClickListener {
-                // todo navigate to description fragment + passing movie id
-                fragment.findNavController().navigate(R.id.descriptionFragment)
-
+                if (movie != null) {
+                    bundle.putInt("movieId", movie.kinopoiskId)
+                }
+                fragment.findNavController().navigate(R.id.descriptionFragment, bundle)
             }
         }
     }

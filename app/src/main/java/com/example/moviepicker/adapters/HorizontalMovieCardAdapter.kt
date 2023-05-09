@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import api.model.Movie
+import data.model.Movie
 import com.example.moviepicker.R
 import com.example.moviepicker.databinding.HorizontalMovieCardBinding
 

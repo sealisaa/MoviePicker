@@ -2,7 +2,7 @@ package com.example.moviepicker.screen
 
 import com.kaspersky.kaspresso.screens.KScreen
 import com.example.moviepicker.R
-import com.example.moviepicker.SearchFragment
+import com.example.moviepicker.ui.SearchFragment
 import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.text.KTextView
 
