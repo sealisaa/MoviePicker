@@ -5,19 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import api.model.Movie
 import api.model.favouriteMovies
-import api.model.movie.Film
-import api.service.FilmDetailsRepository
 import com.example.moviepicker.R
 import com.example.moviepicker.data.model.Movie
 import com.example.moviepicker.adapters.HorizontalMovieCardAdapter
 import com.example.moviepicker.databinding.FragmentProfileBinding
 import io.paperdb.Paper
-import io.reactivex.disposables.CompositeDisposable
 
 
 class ProfileFragment : Fragment() {

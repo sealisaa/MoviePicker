@@ -1,6 +1,6 @@
 package com.example.moviepicker.test
 
-import com.example.moviepicker.ui.MainActivity
+import com.example.moviepicker.MainActivity
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.example.moviepicker.scenario.ProfileTransitionScenario
 import com.example.moviepicker.screen.HomeScreen

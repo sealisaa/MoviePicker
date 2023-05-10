@@ -1,7 +1,7 @@
 package com.example.moviepicker.test
 
 import androidx.test.ext.junit.rules.activityScenarioRule
-import com.example.moviepicker.ui.MainActivity
+import com.example.moviepicker.MainActivity
 import com.example.moviepicker.scenario.ProfileTransitionScenario
 import com.example.moviepicker.screen.ProfileScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
