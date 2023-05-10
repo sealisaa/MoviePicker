@@ -5,53 +5,60 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import api.model.favouriteMovies
 import com.example.moviepicker.R
-import com.example.moviepicker.data.model.Movie
-import com.example.moviepicker.adapters.HorizontalMovieCardAdapter
+import com.example.moviepicker.adapters.FavouritesPagedListAdapter
+import com.example.moviepicker.data.api.KPApiService
+import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.databinding.FragmentProfileBinding
-import io.paperdb.Paper
-
+import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = HorizontalMovieCardAdapter()
-    private val imageIdList = listOf(
-        R.drawable.the_grand_budapest_hotel
-    )
-    private var index = 0
-    fun getFavouriteMovies() {
-        var favouriteMoviesId = arrayListOf<Int>()
-        try {
-            favouriteMoviesId = Paper.book().read("favouriteMovies", favouriteMovies)!!
-        } catch (e : Exception) {
-            print(e)
-        }
-//        for (id in favouriteMoviesId) {
-//
-//        }
-    }
+    private lateinit var viewModel: PopularMoviesViewModel
+
+    lateinit var movieRepository: MoviePagedListRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater)
-        _binding?.apply {
-            moviesRecyclerView.layoutManager = LinearLayoutManager(activity)
-            moviesRecyclerView.adapter = adapter
-            for (i in 1..6) {
-                val movie = Movie(imageIdList[index], "Отель «Гранд Будапешт»", "Уэс Андерсон")
-                adapter.addItem(movie)
+
+        val apiService: KPApiService = com.example.moviepicker.data.api.DBClient.getClient()
+        movieRepository = MoviePagedListRepository(apiService)
+        viewModel = getViewModel()
+
+        val movieAdapter = FavouritesPagedListAdapter(this)
+        val linearLayoutManager = LinearLayoutManager(this.context)
+
+        with (binding) {
+            favouritesRecyclerView.layoutManager = linearLayoutManager
+            favouritesRecyclerView.setHasFixedSize(true)
+            favouritesRecyclerView.adapter = movieAdapter
+        }
+
+        viewModel.moviePagedList.observe(viewLifecycleOwner) {
+            movieAdapter.submitList(it)
+        }
+
+        viewModel.networkState.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility =
+                if (viewModel.listIsEmpty() && it == NetworkState.LOADING) View.VISIBLE else View.GONE
+            binding.textViewConnection.visibility =
+                if (viewModel.listIsEmpty() && it == NetworkState.ERROR) View.VISIBLE else View.GONE
+            if (!viewModel.listIsEmpty()) {
+                movieAdapter.setNetworkState(it)
             }
         }
-        val statistics = "Добавлено ${adapter.itemCount} фильмов"
-        binding.textViewStatistics.setText(statistics)
+
         return binding.root
     }
 
@@ -61,6 +68,14 @@ class ProfileFragment : Fragment() {
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
+    }
+
+    private fun getViewModel(): PopularMoviesViewModel {
+        return ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return PopularMoviesViewModel(movieRepository) as T
+            }
+        })[PopularMoviesViewModel::class.java]
     }
 
     override fun onDestroyView() {
