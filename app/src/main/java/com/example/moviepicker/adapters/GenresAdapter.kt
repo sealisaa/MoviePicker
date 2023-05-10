@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviepicker.R
 
 
-class GenresAdapter : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
+class GenresAdapter(val fragment: Fragment) : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
     var genreTitles = arrayOf(
         "Мультфильмы", "Триллеры", "Комедии", "Ужасы"
     )
@@ -26,6 +28,9 @@ class GenresAdapter : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
 
     override fun onBindViewHolder(holder: GenresViewHolder, position: Int) {
         holder.bindView(position)
+        holder.genreButton.setOnClickListener {
+            fragment.findNavController().navigate(R.id.genreMoviesFragment)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import api.model.favouriteMovies
 import api.model.movie.Film
 import api.service.DBClient
 import api.service.FilmDetailsRepository
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initialize()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -39,14 +41,11 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController = navHostFragment.navController
         bottomNav.setupWithNavController(navController)
 
-
         val filmId = 301
         val apiService: KPApiService = DBClient.getClient()
         filmRepository = FilmDetailsRepository(apiService)
 
         viewModel = getViewModel(filmId)
-
-
     }
 
     fun bindUI(it: Film) {
@@ -55,6 +54,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialize() {
         Paper.init(this)
+        try {
+            favouriteMovies = Paper.book().read("favouriteMovies", ArrayList())!!;
+        } catch (e : Exception) {
+            print(e)
+        }
     }
 
     private fun getViewModel(filmId: Int): FilmViewModel {
