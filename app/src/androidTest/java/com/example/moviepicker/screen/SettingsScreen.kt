@@ -1,6 +1,6 @@
 package com.example.moviepicker.screen
 
-import com.example.moviepicker.SettingsFragment
+import com.example.moviepicker.ui.SettingsFragment
 import com.example.moviepicker.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.edit.KTextInputLayout

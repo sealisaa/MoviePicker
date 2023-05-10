@@ -7,12 +7,31 @@
         android:layout_height="match_parent" tools:layout_editor_absoluteY="1dp"
         tools:layout_editor_absoluteX="1dp" tools:ignore="SpeakableTextPresentCheck"
         android:background="@color/black"
-        tools:context=".DescriptionFragment"
+        tools:context=".ui.DescriptionFragment"
 >
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
     >
+        <ProgressBar
+                android:id="@+id/progressBar"
+                android:visibility="gone"
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+                android:id="@+id/textViewConnection"
+                android:visibility="gone"
+                android:text="@string/connection_problem"
+                app:fontFamily="sans-serif-bold"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
                 android:id="@+id/poster"
@@ -21,7 +40,6 @@
                 android:layout_height="430dp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="1dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="1dp"
-                android:src="@drawable/star_wars"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/poster">

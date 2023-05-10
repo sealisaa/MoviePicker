@@ -1,13 +1,14 @@
 package com.example.moviepicker
 
 import android.os.Bundle
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import api.model.favouriteMovies
 import api.model.movie.Film
 import api.service.DBClient
 import api.service.FilmDetailsRepository
