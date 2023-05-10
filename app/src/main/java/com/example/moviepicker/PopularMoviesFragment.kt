@@ -14,7 +14,6 @@ import api.service.DBClient
 import api.service.KPApiService
 import api.service.PopularFilmsViewModel
 import api.service.repository.NetworkState
-import com.example.moviepicker.adapters.PopularMoviesAdapter
 import com.example.moviepicker.adapters.PopularMoviesPagedListAdapter
 import com.example.moviepicker.databinding.FragmentDescriptionBinding
 import com.example.moviepicker.databinding.FragmentPopularMoviesBinding
