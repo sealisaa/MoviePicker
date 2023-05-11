@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import api.model.top.movie.TopItem
 import api.service.*
 import api.service.repository.NetworkState
 import com.example.moviepicker.adapters.MoviesByGenrePagedListAdapter
@@ -17,9 +18,9 @@ class GenreMoviesFragment : Fragment() {
     private var _binding: FragmentGenreMoviesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: MoviesByGenreViewModel
+    private lateinit var viewModel: GenreMoviesViewModel<TopItem>
 
-    lateinit var movieRepository: MoviePagedListRepository
+    lateinit var movieRepository: MoviePagedListRepository<TopItem>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +39,7 @@ class GenreMoviesFragment : Fragment() {
                 else return 3                                            // FOOTER_VIEW_TYPE will occupy all 3 span
             }
         }
-        with (binding) {
+        with(binding) {
             genreMoviesRecyclerView.layoutManager = gridLayoutManager
             genreMoviesRecyclerView.setHasFixedSize(true)
             genreMoviesRecyclerView.adapter = movieAdapter
@@ -73,12 +74,12 @@ class GenreMoviesFragment : Fragment() {
 //        return view
     }
 
-    private fun getViewModel(): MoviesByGenreViewModel {
+    private fun getViewModel(): GenreMoviesViewModel<TopItem> {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return MoviesByGenreViewModel(movieRepository) as T
+                return GenreMoviesViewModel(movieRepository) as T
             }
-        })[MoviesByGenreViewModel::class.java]
+        })[GenreMoviesViewModel::class.java] as GenreMoviesViewModel<TopItem>
     }
 
     override fun onDestroyView() {

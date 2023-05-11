@@ -33,7 +33,6 @@ class FilmPagingSource(private val apiService: KPApiService, private val composi
             }
         }
 
-
         compositeDisposable.add(
             apiService.getTop(TopType.TOP_250_BEST_FILMS, page)
                 .subscribeOn(Schedulers.io())

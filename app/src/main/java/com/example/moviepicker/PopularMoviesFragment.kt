@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import api.model.top.movie.TopItem
 import api.service.DBClient
 import api.service.KPApiService
 import api.service.PopularFilmsViewModel
@@ -23,9 +24,9 @@ class PopularMoviesFragment : Fragment() {
     private var _binding: FragmentPopularMoviesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: PopularFilmsViewModel
+    private lateinit var viewModel: PopularFilmsViewModel<TopItem>
 
-    lateinit var movieRepository: MoviePagedListRepository
+    lateinit var movieRepository: MoviePagedListRepository<TopItem>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,12 +78,12 @@ class PopularMoviesFragment : Fragment() {
 
     }
 
-    private fun getViewModel(): PopularFilmsViewModel {
+    private fun getViewModel(): PopularFilmsViewModel<TopItem> {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return PopularFilmsViewModel(movieRepository) as T
             }
-        })[PopularFilmsViewModel::class.java]
+        })[PopularFilmsViewModel::class.java] as PopularFilmsViewModel<TopItem>
     }
 
     override fun onDestroyView() {

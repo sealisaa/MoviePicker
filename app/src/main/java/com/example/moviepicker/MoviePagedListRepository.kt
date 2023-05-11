@@ -11,12 +11,12 @@ import api.service.repository.FilmDataSourceFactory
 import api.service.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
-class MoviePagedListRepository(private val apiService: KPApiService) {
+class MoviePagedListRepository<T : Any>(private val apiService: KPApiService) {
 
-    lateinit var filmPagedList: LiveData<PagedList<TopItem>>
-    lateinit var filmDataSourceFactory: FilmDataSourceFactory
+    lateinit var filmPagedList: LiveData<PagedList<T>>
+    lateinit var filmDataSourceFactory: FilmDataSourceFactory<T>
 
-    fun fetchLiveMoviePagedList (compositeDisposable: CompositeDisposable) : LiveData<PagedList<TopItem>> {
+    fun fetchLiveMoviePagedList(compositeDisposable: CompositeDisposable): LiveData<PagedList<T>> {
         filmDataSourceFactory = FilmDataSourceFactory(apiService, compositeDisposable)
 
         val config = PagedList.Config.Builder()
@@ -29,8 +29,8 @@ class MoviePagedListRepository(private val apiService: KPApiService) {
     }
 
     fun getNetworkState(): LiveData<NetworkState> {
-        return Transformations.switchMap<FilmDataSource, NetworkState>(
-            filmDataSourceFactory.filmLiveDataSource, FilmDataSource::networkState
+        return Transformations.switchMap<FilmDataSource<T>, NetworkState>(
+            filmDataSourceFactory.filmLiveDataSource, FilmDataSource<T>::networkState
         )
     }
 }
