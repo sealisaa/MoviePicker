@@ -1,31 +1,14 @@
 package com.example.moviepicker.ui.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
-import com.example.moviepicker.data.model.top.movie.TopItem
-import com.example.moviepicker.data.repository.NetworkState
-import com.example.moviepicker.ui.MoviePagedListRepository
-import io.reactivex.disposables.CompositeDisposable
 
-class FavouritesViewModel(private val filmRepository: MoviePagedListRepository) : ViewModel() {
+class FavouritesViewModel : ViewModel() {
+    private val _favouriteMovies = MutableLiveData<List<Int>>()
+    val favouriteMovies: LiveData<List<Int>> = _favouriteMovies
 
-    private val compositeDisposable = CompositeDisposable()
-
-    private val favouritesPagedList : LiveData<PagedList<TopItem>> by lazy {
-        filmRepository.fetchLiveMoviePagedList(compositeDisposable)
-    }
-
-    val networkState : LiveData<NetworkState> by lazy {
-        filmRepository.getNetworkState()
-    }
-
-    fun listIsEmpty(): Boolean {
-        return favouritesPagedList.value?.isEmpty() ?: true
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
+    fun updateList(newList: List<Int>) {
+        _favouriteMovies.postValue(newList);
     }
 }

@@ -1,3 +1,3 @@
 package api.model
 
-var favouriteMovies = arrayListOf<Int>()
+var favouriteMoviesId = arrayListOf<Int>()

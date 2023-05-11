@@ -2,11 +2,13 @@ package com.example.moviepicker.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.moviepicker.R
 import com.example.moviepicker.databinding.ActivityMainBinding
+import com.example.moviepicker.ui.viewmodel.FavouritesViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.paperdb.Paper
 
@@ -28,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navController)
 
         initialize()
-
     }
 
     private fun initialize() {

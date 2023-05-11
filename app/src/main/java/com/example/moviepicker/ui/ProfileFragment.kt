@@ -5,26 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import api.model.favouriteMovies
+import api.model.favouriteMoviesId
 import com.example.moviepicker.R
-import com.example.moviepicker.adapters.FavouritesPagedListAdapter
+import com.example.moviepicker.adapters.FavouritesAdapter
 import com.example.moviepicker.data.api.KPApiService
-import com.example.moviepicker.data.repository.NetworkState
+import com.example.moviepicker.data.model.movie.Film
 import com.example.moviepicker.databinding.FragmentProfileBinding
-import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
+import com.example.moviepicker.ui.viewmodel.FavouritesViewModel
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: PopularMoviesViewModel
-
-    lateinit var movieRepository: MoviePagedListRepository
+    private lateinit var viewModel: FavouritesViewModel
+    lateinit var adapter: FavouritesAdapter
+    private val favouriteMoviesList: MutableList<Film> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,32 +33,20 @@ class ProfileFragment : Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater)
 
-        val apiService: KPApiService = com.example.moviepicker.data.api.DBClient.getClient()
-        movieRepository = MoviePagedListRepository(apiService)
-        viewModel = getViewModel()
-
-        val movieAdapter = FavouritesPagedListAdapter(this)
+        val favouritesAdapter = FavouritesAdapter(this, favouriteMoviesList)
         val linearLayoutManager = LinearLayoutManager(this.context)
 
         with (binding) {
             favouritesRecyclerView.layoutManager = linearLayoutManager
             favouritesRecyclerView.setHasFixedSize(true)
-            favouritesRecyclerView.adapter = movieAdapter
+            favouritesRecyclerView.adapter = favouritesAdapter
         }
 
-        viewModel.moviePagedList.observe(viewLifecycleOwner) {
-            movieAdapter.submitList(it)
-        }
+        viewModel = getViewModel()
 
-        viewModel.networkState.observe(viewLifecycleOwner) {
-            binding.progressBar.visibility =
-                if (viewModel.listIsEmpty() && it == NetworkState.LOADING) View.VISIBLE else View.GONE
-            binding.textViewConnection.visibility =
-                if (viewModel.listIsEmpty() && it == NetworkState.ERROR) View.VISIBLE else View.GONE
-            if (!viewModel.listIsEmpty()) {
-                movieAdapter.setNetworkState(it)
-            }
-        }
+        viewModel.favouriteMovies.observe(viewLifecycleOwner, Observer { newContent ->
+            adapter.updateList(newContent)
+        })
 
         return binding.root
     }
@@ -70,17 +59,17 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun getViewModel(): PopularMoviesViewModel {
-        return ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PopularMoviesViewModel(movieRepository) as T
-            }
-        })[PopularMoviesViewModel::class.java]
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun getViewModel(): FavouritesViewModel {
+        return ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return FavouritesViewModel() as T
+            }
+        })[FavouritesViewModel::class.java]
     }
 
     companion object {

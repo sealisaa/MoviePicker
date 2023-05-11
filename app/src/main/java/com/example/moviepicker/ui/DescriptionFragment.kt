@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import api.model.favouriteMovies
+import api.model.favouriteMoviesId
 import com.example.moviepicker.ui.viewmodel.MovieViewModel
 import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.data.repository.NetworkState
@@ -31,7 +31,6 @@ class DescriptionFragment : Fragment() {
     private lateinit var viewModel : MovieViewModel
     private lateinit var filmRepository: com.example.moviepicker.data.api.FilmDetailsRepository
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,19 +51,19 @@ class DescriptionFragment : Fragment() {
                 movieName.text = it.data.nameRu
                 textViewDescription.text = it.data.description
                 val movieId = it.data.kinopoiskId
-                if (favouriteMovies.contains(movieId)) {
+                if (favouriteMoviesId.contains(movieId)) {
                     saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }
                 saveButton.setOnClickListener {
-                    if (favouriteMovies.contains(movieId)) {
-                        favouriteMovies.remove(movieId)
+                    if (favouriteMoviesId.contains(movieId)) {
+                        favouriteMoviesId.remove(movieId)
                         saveButton.setImageResource(R.drawable.ic_save_button)
                     } else {
-                        favouriteMovies.add(movieId)
+                        favouriteMoviesId.add(movieId)
                         saveButton.setImageResource(R.drawable.ic_unsave_button)
                     }
                     try {
-                        Paper.book().write("favouriteMovies", favouriteMovies)
+                        Paper.book().write("favouriteMovies", favouriteMoviesId)
                     } catch (e : Exception) {
                         print(e)
                     }
