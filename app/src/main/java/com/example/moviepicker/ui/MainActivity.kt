@@ -3,8 +3,6 @@ package com.example.moviepicker.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -12,9 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import api.model.favouriteMoviesId
+import api.service.KPApiService
 import com.example.moviepicker.R
 import com.example.moviepicker.data.api.DBClient
-import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.data.repository.FavouriteMoviesRepository
 import com.example.moviepicker.databinding.ActivityMainBinding
 import com.example.moviepicker.ui.viewmodel.FavouritesViewModel
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navController)
 
         Paper.init(this)
-        favouriteMoviesId = (Paper.book().read<ArrayList<Int>>("favouriteMovies") ?: emptyList()) as ArrayList<Int>
+//        favouriteMoviesId = (Paper.book().read<ArrayList<Int>>("favouriteMovies") ?: emptyList()) as ArrayList<Int>
         Log.d("MainActivity", favouriteMoviesId.size.toString())
 
         val apiService: KPApiService = DBClient.getClient()

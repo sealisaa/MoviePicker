@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import api.model.favouriteMoviesId
+import api.service.KPApiService
 import com.example.moviepicker.ui.viewmodel.MovieViewModel
-import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.R

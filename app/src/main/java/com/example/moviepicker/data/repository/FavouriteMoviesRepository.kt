@@ -1,9 +1,8 @@
 package com.example.moviepicker.data.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.moviepicker.data.api.KPApiService
+import api.service.KPApiService
 import com.example.moviepicker.data.model.movie.Film
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

@@ -5,31 +5,29 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import api.service.FIRST_PAGE
 import api.service.KPApiService
-import com.example.moviepicker.data.model.top.movie.TopItem
-import com.example.moviepicker.data.model.top.movie.TopType
+import com.example.moviepicker.data.model.movie.FilmItem
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MovieDataSource(
+class MovieByFiltersDataSource(
     private val apiService: KPApiService,
-    private val compositeDisposable: CompositeDisposable,
-    private val topType: TopType
+    private val compositeDisposable: CompositeDisposable
 ) :
-    PageKeyedDataSource<Int, TopItem>() {
+    PageKeyedDataSource<Int, FilmItem>() {
 
     private var page = FIRST_PAGE
 
     val networkState: MutableLiveData<NetworkState> = MutableLiveData()
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, TopItem>) {
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, FilmItem>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getTop(topType, params.key)
+            apiService.getFilmsByFileters(genreId = 1, page = params.key)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
-                        if (it.pagesCount >= params.key) {
-                            callback.onResult(it.films, params.key + 1)
+                        if (it.totalPages!! >= params.key) {
+                            callback.onResult(it.items, params.key + 1)
                             networkState.postValue(NetworkState.LOADED)
                         } else {
                             networkState.postValue(NetworkState.ENDOFLIST)
@@ -43,18 +41,18 @@ class MovieDataSource(
         )
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, TopItem>) {
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, FilmItem>) {
         TODO("Not yet implemented")
     }
 
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, TopItem>) {
+    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, FilmItem>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getTop(topType, page)
+            apiService.getFilmsByFileters(genreId = 1, page = page)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
-                        callback.onResult(it.films, null, page + 1)
+                        callback.onResult(it.items, null, page + 1)
                         networkState.postValue(NetworkState.LOADED)
                     },
                     {

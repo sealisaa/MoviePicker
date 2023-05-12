@@ -3,10 +3,10 @@ package com.example.moviepicker.data.repository
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import api.service.FIRST_PAGE
+import api.service.KPApiService
 import com.example.moviepicker.data.model.top.movie.TopItem
 import com.example.moviepicker.data.model.top.movie.TopType
-import com.example.moviepicker.data.api.FIRST_PAGE
-import com.example.moviepicker.data.api.KPApiService
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 

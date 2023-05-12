@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import api.service.KPApiService
+import api.service.POST_PER_PAGE
 import com.example.moviepicker.data.model.top.movie.TopItem
-import com.example.moviepicker.data.api.*
 import com.example.moviepicker.data.model.top.movie.TopType
 import com.example.moviepicker.data.repository.MovieDataSource
 import com.example.moviepicker.data.repository.MovieDataSourceFactory

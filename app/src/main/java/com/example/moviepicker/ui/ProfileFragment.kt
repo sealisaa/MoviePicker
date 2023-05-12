@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import api.model.favouriteMoviesId
+import api.service.KPApiService
 import com.example.moviepicker.R
 import com.example.moviepicker.adapters.FavouritesAdapter
 import com.example.moviepicker.data.api.DBClient
-import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.data.model.movie.Film
 import com.example.moviepicker.data.repository.FavouriteMoviesRepository
 import com.example.moviepicker.databinding.FragmentProfileBinding

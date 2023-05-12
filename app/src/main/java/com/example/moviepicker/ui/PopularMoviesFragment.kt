@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.moviepicker.data.api.KPApiService
+import api.service.KPApiService
 import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
 import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.adapters.MoviesPagedListAdapter

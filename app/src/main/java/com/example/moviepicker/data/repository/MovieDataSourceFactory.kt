@@ -2,8 +2,8 @@ package com.example.moviepicker.data.repository
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
+import api.service.KPApiService
 import com.example.moviepicker.data.model.top.movie.TopItem
-import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.data.model.top.movie.TopType
 import io.reactivex.disposables.CompositeDisposable
 
