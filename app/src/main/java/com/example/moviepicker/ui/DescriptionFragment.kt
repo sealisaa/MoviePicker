@@ -1,10 +1,12 @@
 package com.example.moviepicker.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -14,22 +16,22 @@ import com.example.moviepicker.data.api.KPApiService
 import com.example.moviepicker.data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.R
+import com.example.moviepicker.data.api.DBClient
+import com.example.moviepicker.data.api.FilmDetailsRepository
 import com.example.moviepicker.databinding.FragmentDescriptionBinding
+import com.example.moviepicker.ui.viewmodel.FavouritesViewModel
 import io.paperdb.Paper
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DescriptionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DescriptionFragment : Fragment() {
 
     private var _binding: FragmentDescriptionBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel : MovieViewModel
-    private lateinit var filmRepository: com.example.moviepicker.data.api.FilmDetailsRepository
+    private lateinit var viewModel: MovieViewModel
+    private lateinit var movieRepository: FilmDetailsRepository
+
+    private val favouritesViewModel : FavouritesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,36 +39,44 @@ class DescriptionFragment : Fragment() {
     ): View? {
         _binding = FragmentDescriptionBinding.inflate(inflater)
 
-        binding.backButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
+        val movieId = arguments?.getInt("movieId") ?: -1
 
-        val apiService: KPApiService = com.example.moviepicker.data.api.DBClient.getClient()
-        filmRepository = com.example.moviepicker.data.api.FilmDetailsRepository(apiService)
 
-        viewModel = getViewModel(arguments?.getInt("movieId") ?: -1)
-        viewModel.movieDetails.observe(viewLifecycleOwner) {
-            with(binding) {
-                it.data.kinopoiskId
-                movieName.text = it.data.nameRu
-                textViewDescription.text = it.data.description
-                val movieId = it.data.kinopoiskId
+        with(binding) {
+            binding.backButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            saveButton.setOnClickListener {
                 if (favouriteMoviesId.contains(movieId)) {
+//                    favouriteMoviesId.remove(movieId)
+                    saveButton.setImageResource(R.drawable.ic_save_button)
+                } else {
+//                    favouriteMoviesId.add(movieId)
+                    favouritesViewModel.saveMovie(movieId)
                     saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }
-                saveButton.setOnClickListener {
-                    if (favouriteMoviesId.contains(movieId)) {
-                        favouriteMoviesId.remove(movieId)
-                        saveButton.setImageResource(R.drawable.ic_save_button)
-                    } else {
-                        favouriteMoviesId.add(movieId)
-                        saveButton.setImageResource(R.drawable.ic_unsave_button)
-                    }
-                    try {
-                        Paper.book().write("favouriteMovies", favouriteMoviesId)
-                    } catch (e : Exception) {
-                        print(e)
-                    }
+                try {
+                    Paper.book().write("favouriteMovies", favouriteMoviesId)
+                } catch (e : Exception) {
+                    Log.e("DescriptionFragment", e.stackTraceToString())
+                }
+            }
+            Log.d("DescriptionFragment", favouriteMoviesId.size.toString())
+        }
+
+        val apiService: KPApiService = DBClient.getClient()
+        movieRepository = FilmDetailsRepository(apiService)
+
+        viewModel = getViewModel(movieId)
+        viewModel.movieDetails.observe(viewLifecycleOwner) {
+            with(binding) {
+
+                movieName.text = it.data.nameRu
+                textViewDescription.text = it.data.description
+                val kinopoiskId = it.data.kinopoiskId
+
+                if (favouriteMoviesId.contains(kinopoiskId)) {
+                    saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }
             }
             Glide.with(this).load(it.data.posterUrl).into(binding.poster)
@@ -76,13 +86,15 @@ class DescriptionFragment : Fragment() {
             binding.progressBar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
             binding.textViewConnection.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
         }
+
+
         return binding.root
     }
 
     private fun getViewModel(filmId: Int): MovieViewModel {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return MovieViewModel(filmRepository, filmId) as T
+                return MovieViewModel(movieRepository, filmId) as T
             }
         })[MovieViewModel::class.java]
     }

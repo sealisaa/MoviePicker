@@ -6,6 +6,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.moviepicker.data.model.top.movie.TopItem
 import com.example.moviepicker.data.api.*
+import com.example.moviepicker.data.model.top.movie.TopType
 import com.example.moviepicker.data.repository.MovieDataSource
 import com.example.moviepicker.data.repository.MovieDataSourceFactory
 import com.example.moviepicker.data.repository.NetworkState
@@ -16,8 +17,8 @@ class MoviePagedListRepository(private val apiService: KPApiService) {
     lateinit var filmPagedList: LiveData<PagedList<TopItem>>
     lateinit var movieDataSourceFactory: MovieDataSourceFactory
 
-    fun fetchLiveMoviePagedList (compositeDisposable: CompositeDisposable) : LiveData<PagedList<TopItem>> {
-        movieDataSourceFactory = MovieDataSourceFactory(apiService, compositeDisposable)
+    fun fetchLiveMoviePagedList (compositeDisposable: CompositeDisposable, topType: TopType) : LiveData<PagedList<TopItem>> {
+        movieDataSourceFactory = MovieDataSourceFactory(apiService, compositeDisposable, topType)
 
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)

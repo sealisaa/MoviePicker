@@ -12,7 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.moviepicker.R
 import com.example.moviepicker.data.model.movie.Film
 
-class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: List<Film>) : RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder>() {
+class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: List<Film>) :
+    RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder>() {
     fun updateList(newList: List<Film>) {
         favouriteMoviesList = newList
         notifyDataSetChanged() //or you can implement a DiffUtil.Callback
@@ -30,7 +31,7 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: List<Fi
     override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
         holder.bindView(position)
         holder.movieCard.setOnClickListener {
-            fragment.findNavController().navigate(R.id.genreMoviesFragment)
+            fragment.findNavController().navigate(R.id.descriptionFragment)
         }
     }
 

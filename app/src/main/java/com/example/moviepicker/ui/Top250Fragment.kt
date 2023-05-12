@@ -8,31 +8,28 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.moviepicker.data.api.KPApiService
-import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
-import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.adapters.MoviesPagedListAdapter
 import com.example.moviepicker.data.api.DBClient
-import com.example.moviepicker.databinding.FragmentPopularMoviesBinding
+import com.example.moviepicker.data.api.KPApiService
+import com.example.moviepicker.data.repository.NetworkState
+import com.example.moviepicker.databinding.FragmentTop250Binding
+import com.example.moviepicker.ui.viewmodel.Top250ViewModel
 
-class PopularMoviesFragment : Fragment() {
+class Top250Fragment : Fragment() {
 
-    private var _binding: FragmentPopularMoviesBinding? = null
+    private var _binding : FragmentTop250Binding? = null
+
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: PopularMoviesViewModel
+    private lateinit var viewModel: Top250ViewModel
 
     lateinit var movieRepository: MoviePagedListRepository
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPopularMoviesBinding.inflate(inflater)
+        _binding = FragmentTop250Binding.inflate(inflater)
 
-//        val recyclerView = view.findViewById<RecyclerView>(R.id.popularMoviesRecyclerView)
-//        recyclerView.layoutManager = GridLayoutManager(activity, 3)
-//        recyclerView.adapter = PopularMoviesAdapter(this)
         val apiService: KPApiService = DBClient.getClient()
         movieRepository = MoviePagedListRepository(apiService)
 
@@ -50,9 +47,9 @@ class PopularMoviesFragment : Fragment() {
         };
 
         with (binding) {
-            popularMoviesRecyclerView.layoutManager = gridLayoutManager
-            popularMoviesRecyclerView.setHasFixedSize(true)
-            popularMoviesRecyclerView.adapter = movieAdapter
+            top250RecyclerView.layoutManager = gridLayoutManager
+            top250RecyclerView.setHasFixedSize(true)
+            top250RecyclerView.adapter = movieAdapter
         }
 
 
@@ -74,12 +71,12 @@ class PopularMoviesFragment : Fragment() {
 
     }
 
-    private fun getViewModel(): PopularMoviesViewModel {
+    private fun getViewModel(): Top250ViewModel {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PopularMoviesViewModel(movieRepository) as T
+                return Top250ViewModel(movieRepository) as T
             }
-        })[PopularMoviesViewModel::class.java]
+        })[Top250ViewModel::class.java]
     }
 
     override fun onDestroyView() {

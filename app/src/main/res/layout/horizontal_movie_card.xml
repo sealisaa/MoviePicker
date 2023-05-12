@@ -5,6 +5,7 @@
              android:layout_height="wrap_content"
              tools:context=".ui.HorizontalMovieCard">
     <androidx.cardview.widget.CardView
+            android:id="@+id/movieCard"
             android:layout_width="360dp"
             android:layout_height="match_parent" app:cardBackgroundColor="@color/movie_card_color"
             app:cardCornerRadius="8dp" android:layout_gravity="center" android:layout_margin="10dp">

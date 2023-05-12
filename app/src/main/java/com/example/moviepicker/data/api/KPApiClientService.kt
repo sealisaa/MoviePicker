@@ -33,12 +33,12 @@ internal class KPApiClientService(private val token: String, private val timeout
             .httpGet()
             .timeout(timeout)
             .timeoutRead(timeout)
-            .header(mapOf(com.example.moviepicker.data.api.KPApiClientService.Companion.AUTH_HEADER to token))
+            .header(mapOf(AUTH_HEADER to token))
             .responseString()
 
         when (result) {
             is com.github.kittinunf.result.Result.Failure -> {
-                Log.e("HTTP-status: ", response.statusCode.toString())
+                Log.e("HTTP-status: ", response.responseMessage.toString())
                 Log.e("ERROR: ", response.statusCode.toString())
                 return null
             }

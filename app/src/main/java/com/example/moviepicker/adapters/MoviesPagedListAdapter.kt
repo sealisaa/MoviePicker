@@ -17,7 +17,7 @@ import com.example.moviepicker.data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.R
 
-class PopularMoviesPagedListAdapter(val fragment: Fragment) :
+class MoviesPagedListAdapter(val fragment: Fragment) :
     PagedListAdapter<TopItem, RecyclerView.ViewHolder>(MovieDiffCallback()) {
 
     val DATA_VIEW_TYPE = 1

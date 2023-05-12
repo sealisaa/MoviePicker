@@ -4,18 +4,6 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph.xml"
             app:startDestination="@id/homeFragment">
 
-        <fragment android:id="@+id/popularMoviesFragment" android:name="com.example.moviepicker.PopularMoviesFragment"
-                  android:label="PopularMoviesFragment">
-            <action android:id="@+id/action_popularMoviesFragment_to_descriptionFragment"
-                    app:destination="@id/descriptionFragment"/>
-        </fragment>
-        <fragment android:id="@+id/descriptionFragment" android:name="com.example.moviepicker.DescriptionFragment"
-                  android:label="DescriptionFragment"/>
-        <fragment android:id="@+id/genresFragment" android:name="com.example.moviepicker.GenresFragment"
-                  android:label="fragment_genres" tools:layout="@layout/fragment_genres">
-            <action android:id="@+id/action_genresFragment_to_genreMoviesFragment"
-                    app:destination="@id/genreMoviesFragment"/>
-        </fragment>
     <fragment
             android:id="@+id/popularMoviesFragment"
             android:name="com.example.moviepicker.ui.PopularMoviesFragment"
@@ -69,11 +57,7 @@
         <action android:id="@+id/action_filtersFragment_to_searchResultFragment"
                 app:destination="@id/searchResultFragment"/>
     </fragment>
-    <fragment android:id="@+id/searchResultFragment" android:name="com.example.moviepicker.SearchResultFragment"
-              android:label="fragment_search_result" tools:layout="@layout/fragment_search_result"/>
-    <fragment android:id="@+id/settingsFragment" android:name="com.example.moviepicker.SettingsFragment"
-              android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
-    <fragment android:id="@+id/genreMoviesFragment" android:name="com.example.moviepicker.GenreMoviesFragment"
+    <fragment android:id="@+id/genreMoviesFragment" android:name="com.example.moviepicker.ui.GenreMoviesFragment"
               android:label="fragment_genre_movies" tools:layout="@layout/fragment_genre_movies"/>
     <fragment
             android:id="@+id/searchResultFragment" android:name="com.example.moviepicker.ui.SearchResultFragment"

@@ -10,7 +10,11 @@ import com.example.moviepicker.data.api.KPApiService
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MovieDataSource(private val apiService: KPApiService, private val compositeDisposable: CompositeDisposable) :
+class MovieDataSource(
+    private val apiService: KPApiService,
+    private val compositeDisposable: CompositeDisposable,
+    private val topType: TopType
+) :
     PageKeyedDataSource<Int, TopItem>() {
 
     private var page = FIRST_PAGE
@@ -20,7 +24,7 @@ class MovieDataSource(private val apiService: KPApiService, private val composit
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, TopItem>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getTop(TopType.TOP_250_BEST_FILMS, params.key)
+            apiService.getTop(topType, params.key)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
@@ -46,7 +50,7 @@ class MovieDataSource(private val apiService: KPApiService, private val composit
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, TopItem>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getTop(TopType.TOP_250_BEST_FILMS, page)
+            apiService.getTop(topType, page)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {

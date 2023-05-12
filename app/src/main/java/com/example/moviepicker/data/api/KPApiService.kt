@@ -15,8 +15,8 @@ const val FIRST_PAGE = 1
 const val POST_PER_PAGE = 20
 
 class KPApiService(token: String, timeoutMs: Int = 15000) {
-    private val kpApiClientService: com.example.moviepicker.data.api.KPApiClientService =
-        com.example.moviepicker.data.api.KPApiClientService(token, timeoutMs)
+    private val kpApiClientService: KPApiClientService =
+        KPApiClientService(token, timeoutMs)
 
     /**
      * This method retrieves film data.
@@ -45,6 +45,25 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
             result
         }
 
+    }
+
+    fun getFilms(list: List<Int>, appendTypes: Iterable<AppendType> = emptyList()): Single<MutableList<Film>> {
+        return Single.fromCallable {
+            val appends = appendTypes.joinToString()
+            val result = mutableListOf<Film>()
+            for (id in list) {
+                kpApiClientService.request(
+                    MAIN_API_URL_V2_1,
+                    "$GET_FILM/$id?append_to_response=$appends",
+                    Film::class.java
+                )?.let {
+                    result.add(
+                        it
+                    )
+                }
+            }
+            result
+        }
     }
 
     /**
