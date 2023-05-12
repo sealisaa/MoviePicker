@@ -2,10 +2,8 @@ package api.service
 
 import api.model.movie.AppendType
 import api.model.movie.Film
-import api.model.search.movie.keyword.SearchResult
 import api.model.top.movie.TopResult
 import api.model.top.movie.TopType
-import api.model.Result
 import api.model.movie.FilmsByFilters
 import api.service.KPApiClientService.Companion.GET_FILM
 import api.service.KPApiClientService.Companion.GET_TOP
@@ -55,7 +53,7 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
      * @param page page.
      */
     fun getTop(topType: TopType, page: Int = 1): Single<TopResult> {
-        return Single.fromCallable{
+        return Single.fromCallable {
             kpApiClientService.request(
                 MAIN_API_URL_V2_2,
                 "$GET_FILM$GET_TOP?type=$topType&page=$page",
@@ -135,7 +133,6 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
 //    }
 
 
-
 //    /**
 //     * Returns all persons by particular film id.
 //     *
@@ -171,16 +168,19 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
         yearTo: Int? = null,
         keyword: String? = null,
         page: Int? = null
-    ): Result<FilmsByFilters>? {
-//        return kpApiClientService.request(
-//            MAIN_API_URL_V2_2,
-//            ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (countryId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
-//                    "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
-//                    "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
-//                    "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(1),
-//           FilmsByFilters::class.java
-//        )
-        return null
+    ): Single<FilmsByFilters> {
+        return Single.fromCallable {
+            kpApiClientService.request(
+                MAIN_API_URL_V2_2,
+                ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (countryId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
+                        "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
+                        "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
+                        "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(
+                    1
+                ),
+                FilmsByFilters::class.java
+            )
+        }
     }
 
 

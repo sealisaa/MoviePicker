@@ -19,15 +19,15 @@ class GenreMoviesFragment : Fragment() {
 
     private lateinit var viewModel: MoviesByGenreViewModel
 
-    lateinit var movieRepository: MoviePagedListRepository
+    lateinit var movieRepository: MoviesByFiltersPagedListRepository
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentGenreMoviesBinding.inflate(inflater)
         val apiService: KPApiService = DBClient.getClient()
-        movieRepository = MoviePagedListRepository(apiService)
-
+        val genreId = arguments?.getInt("genreId") ?: -1
+//        movieRepository = MoviesByFiltersPagedListRepository(apiService,genreId)
         viewModel = getViewModel()
         val movieAdapter = MoviesByGenrePagedListAdapter(this)
         val gridLayoutManager = GridLayoutManager(this.context, 3)
@@ -38,7 +38,7 @@ class GenreMoviesFragment : Fragment() {
                 else return 3                                            // FOOTER_VIEW_TYPE will occupy all 3 span
             }
         }
-        with (binding) {
+        with(binding) {
             genreMoviesRecyclerView.layoutManager = gridLayoutManager
             genreMoviesRecyclerView.setHasFixedSize(true)
             genreMoviesRecyclerView.adapter = movieAdapter

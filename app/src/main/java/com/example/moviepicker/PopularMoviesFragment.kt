@@ -5,17 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import api.service.DBClient
 import api.service.KPApiService
 import api.service.PopularFilmsViewModel
 import api.service.repository.NetworkState
 import com.example.moviepicker.adapters.PopularMoviesPagedListAdapter
-import com.example.moviepicker.databinding.FragmentDescriptionBinding
 import com.example.moviepicker.databinding.FragmentPopularMoviesBinding
 
 class PopularMoviesFragment : Fragment() {
@@ -25,7 +22,7 @@ class PopularMoviesFragment : Fragment() {
 
     private lateinit var viewModel: PopularFilmsViewModel
 
-    lateinit var movieRepository: MoviePagedListRepository
+    lateinit var movieRepository: PopularMoviePagedListRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +34,7 @@ class PopularMoviesFragment : Fragment() {
 //        recyclerView.layoutManager = GridLayoutManager(activity, 3)
 //        recyclerView.adapter = PopularMoviesAdapter(this)
         val apiService: KPApiService = DBClient.getClient()
-        movieRepository = MoviePagedListRepository(apiService)
+        movieRepository = PopularMoviePagedListRepository(apiService)
 
         viewModel = getViewModel()
 

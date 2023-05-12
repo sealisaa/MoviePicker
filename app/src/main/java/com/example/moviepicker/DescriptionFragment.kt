@@ -35,7 +35,7 @@ class DescriptionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDescriptionBinding.inflate(inflater)
-
+        val movieId = arguments?.getInt("movieId") ?: -1
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -45,7 +45,7 @@ class DescriptionFragment : Fragment() {
                 it.data.kinopoiskId
                 movieName.text = it.data.nameRu
                 textViewDescription.text = it.data.description
-                val movieId = it.data.kinopoiskId
+//                val movieId = it.data.kinopoiskId
                 if (favouriteMovies.contains(movieId)) {
                     saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }

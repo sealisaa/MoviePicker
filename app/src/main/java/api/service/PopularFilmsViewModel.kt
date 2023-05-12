@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import api.model.top.movie.TopItem
 import api.service.repository.NetworkState
-import com.example.moviepicker.MoviePagedListRepository
+import com.example.moviepicker.PopularMoviePagedListRepository
 import io.reactivex.disposables.CompositeDisposable
 
-class PopularFilmsViewModel(private val filmRepository: MoviePagedListRepository) : ViewModel() {
+class PopularFilmsViewModel(private val filmRepository: PopularMoviePagedListRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 

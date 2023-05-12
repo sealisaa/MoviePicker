@@ -6,17 +6,17 @@ import api.model.top.movie.TopItem
 import api.service.KPApiService
 import io.reactivex.disposables.CompositeDisposable
 
-class FilmDataSourceFactory(
+class PopularFilmsDataSourceFactory(
     private val apiService: KPApiService,
     private val compositeDisposable: CompositeDisposable
 ) : DataSource.Factory<Int, TopItem>() {
 
-    val filmLiveDataSource = MutableLiveData<FilmDataSource>()
+    val filmLiveDataSource = MutableLiveData<PopularFilmDataSource>()
 
     override fun create(): DataSource<Int, TopItem> {
-        val filmDataSource = FilmDataSource(apiService, compositeDisposable)
+        val popularFilmDataSource = PopularFilmDataSource(apiService, compositeDisposable)
 
-        filmLiveDataSource.postValue(filmDataSource)
-        return filmDataSource
+        filmLiveDataSource.postValue(popularFilmDataSource)
+        return popularFilmDataSource
     }
 }
