@@ -26,7 +26,6 @@ class ProfileFragment : Fragment() {
     private lateinit var viewModel: FavouritesViewModel
     private lateinit var movieRepository: FavouriteMoviesRepository
     private lateinit var adapter: FavouritesAdapter
-//    private val viewModel : FavouritesViewModel by activityViewModels()
 
     private val favouriteMoviesList: MutableList<Film> = mutableListOf()
 
@@ -48,21 +47,13 @@ class ProfileFragment : Fragment() {
         val apiService: KPApiService = DBClient.getClient()
         movieRepository = FavouriteMoviesRepository(apiService)
 
-//        viewModel = getViewModel(favouriteMoviesId)
         viewModel = ViewModelProvider(requireActivity())[FavouritesViewModel::class.java]
         viewModel.favouriteMovies.observe(viewLifecycleOwner) {
             Log.d("ProfileFragment", it.size.toString())
             adapter.updateList(it)
         }
 
-
-
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,16 +69,4 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-//    private fun getViewModel(savedMoviesId: MutableList<Int>): FavouritesViewModel {
-//        return ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
-//            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//                return FavouritesViewModel(movieRepository, savedMoviesId) as T
-//            }
-//        })[FavouritesViewModel::class.java]
-//    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = SearchResultFragment()
-    }
 }

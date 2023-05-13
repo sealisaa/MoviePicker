@@ -10,16 +10,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import api.model.favouriteMoviesId
 import api.service.KPApiService
-import com.example.moviepicker.ui.viewmodel.MovieViewModel
-import com.example.moviepicker.data.repository.NetworkState
 import com.bumptech.glide.Glide
 import com.example.moviepicker.R
 import com.example.moviepicker.data.api.DBClient
 import com.example.moviepicker.data.api.FilmDetailsRepository
+import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.databinding.FragmentDescriptionBinding
 import com.example.moviepicker.ui.viewmodel.FavouritesViewModel
+import com.example.moviepicker.ui.viewmodel.MovieViewModel
 import io.paperdb.Paper
 
 
@@ -41,27 +40,25 @@ class DescriptionFragment : Fragment() {
 
         val movieId = arguments?.getInt("movieId") ?: -1
 
-
         with(binding) {
             binding.backButton.setOnClickListener {
                 findNavController().popBackStack()
             }
             saveButton.setOnClickListener {
-                if (favouriteMoviesId.contains(movieId)) {
-//                    favouriteMoviesId.remove(movieId)
+                if (favouritesViewModel.savedMoviesId.contains(movieId)) {
+                    favouritesViewModel.deleteMovie(movieId)
                     saveButton.setImageResource(R.drawable.ic_save_button)
                 } else {
-//                    favouriteMoviesId.add(movieId)
                     favouritesViewModel.saveMovie(movieId)
                     saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }
                 try {
-                    Paper.book().write("favouriteMovies", favouriteMoviesId)
+                    Paper.book().write("favouriteMovies", favouritesViewModel.savedMoviesId)
                 } catch (e : Exception) {
                     Log.e("DescriptionFragment", e.stackTraceToString())
                 }
             }
-            Log.d("DescriptionFragment", favouriteMoviesId.size.toString())
+            Log.d("DescriptionFragment", favouritesViewModel.savedMoviesId.toString())
         }
 
         val apiService: KPApiService = DBClient.getClient()
@@ -75,7 +72,7 @@ class DescriptionFragment : Fragment() {
                 textViewDescription.text = it.data.description
                 val kinopoiskId = it.data.kinopoiskId
 
-                if (favouriteMoviesId.contains(kinopoiskId)) {
+                if (favouritesViewModel.savedMoviesId.contains(kinopoiskId)) {
                     saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }
             }
@@ -83,8 +80,13 @@ class DescriptionFragment : Fragment() {
         }
 
         viewModel.networkState.observe(viewLifecycleOwner) {
-            binding.progressBar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
-            binding.textViewConnection.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
+            with (binding) {
+                ratingBar.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
+                saveButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
+                linkButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
+                progressBar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
+                textViewConnection.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
+            }
         }
 
 

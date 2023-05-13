@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moviepicker.data.model.Movie
 import com.example.moviepicker.R
+import com.example.moviepicker.data.model.Movie
 import com.example.moviepicker.databinding.HorizontalMovieCardBinding
 
 class HorizontalMovieCardAdapter : RecyclerView.Adapter<HorizontalMovieCardAdapter.HorizontalCardMovieHolder>() {
@@ -18,7 +18,9 @@ class HorizontalMovieCardAdapter : RecyclerView.Adapter<HorizontalMovieCardAdapt
             movieTitle.text = movie.title
             directorName.text = movie.directorName
             moviePoster.setImageResource(movie.imageId)
+
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalCardMovieHolder {

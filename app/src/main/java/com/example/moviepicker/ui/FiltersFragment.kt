@@ -10,17 +10,9 @@ import com.example.moviepicker.R
 import com.example.moviepicker.databinding.FragmentFiltersBinding
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FiltersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FiltersFragment : Fragment() {
 
     private var _binding: FragmentFiltersBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

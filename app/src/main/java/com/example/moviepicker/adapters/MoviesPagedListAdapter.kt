@@ -1,6 +1,5 @@
 package com.example.moviepicker.adapters
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +26,7 @@ class MoviesPagedListAdapter(val fragment: Fragment) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE) {
-            (holder as MovieItemViewHolder).bind(getItem(position), holder.itemView.context)
+            (holder as MovieItemViewHolder).bind(getItem(position))
         } else {
             (holder as NetworkStateItemViewHolder).bind(networkState)
         }
@@ -74,7 +73,7 @@ class MoviesPagedListAdapter(val fragment: Fragment) :
 
     class MovieItemViewHolder(view: View, val fragment: Fragment) : RecyclerView.ViewHolder(view) {
 
-        fun bind(movie: TopItem?, context: Context) {
+        fun bind(movie: TopItem?) {
             val title : TextView = itemView.findViewById(R.id.movieTitle)
             val year : TextView = itemView.findViewById(R.id.movieYear)
             val poster : ImageView = itemView.findViewById(R.id.moviePoster)

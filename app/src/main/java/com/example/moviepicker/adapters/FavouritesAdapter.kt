@@ -1,5 +1,6 @@
 package com.example.moviepicker.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,9 +30,12 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: List<Fi
     }
 
     override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
+        // todo implement network error message as it is done in MoviesPagedListAdapter
         holder.bindView(position)
         holder.movieCard.setOnClickListener {
-            fragment.findNavController().navigate(R.id.descriptionFragment)
+            val bundle = Bundle()
+            bundle.putInt("movieId", favouriteMoviesList[position].data.kinopoiskId)
+            fragment.findNavController().navigate(R.id.descriptionFragment, bundle)
         }
     }
 

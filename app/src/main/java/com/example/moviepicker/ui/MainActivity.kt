@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import api.model.favouriteMoviesId
 import api.service.KPApiService
 import com.example.moviepicker.R
 import com.example.moviepicker.data.api.DBClient
@@ -26,10 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: FavouritesViewModel
     private lateinit var movieRepository: FavouriteMoviesRepository
 
-    init {
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navController)
 
         Paper.init(this)
-//        favouriteMoviesId = (Paper.book().read<ArrayList<Int>>("favouriteMovies") ?: emptyList()) as ArrayList<Int>
+        val favouriteMoviesId = Paper.book().read<ArrayList<Int>>("favouriteMovies") ?: arrayListOf()
         Log.d("MainActivity", favouriteMoviesId.size.toString())
 
         val apiService: KPApiService = DBClient.getClient()
