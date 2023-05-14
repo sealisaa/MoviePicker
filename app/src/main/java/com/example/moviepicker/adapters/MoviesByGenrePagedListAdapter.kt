@@ -1,11 +1,11 @@
 package com.example.moviepicker.adapters
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -27,7 +27,7 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE) {
-            (holder as MovieItemViewHolder).bind(getItem(position), holder.itemView.context)
+            (holder as MovieItemViewHolder).bind(getItem(position))
         } else {
             (holder as NetworkStateItemViewHolder).bind(networkState)
         }
@@ -74,7 +74,7 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
 
     class MovieItemViewHolder(view: View, val fragment: Fragment) : RecyclerView.ViewHolder(view) {
 
-        fun bind(movie: FilmItem?, context: Context) {
+        fun bind(movie: FilmItem?) {
             val title: TextView = itemView.findViewById(R.id.movieTitle)
             val year: TextView = itemView.findViewById(R.id.movieYear)
             val poster: ImageView = itemView.findViewById(R.id.moviePoster)
@@ -85,7 +85,6 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
             Glide.with(fragment).load(movie?.posterUrl).into(poster)
 
             itemView.setOnClickListener {
-                // todo navigate to description fragment + passing movie id
                 if (movie != null) {
                     bundle.putInt("movieId", movie.kinopoiskId)
                 }
@@ -96,12 +95,22 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
 
     class NetworkStateItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(networkState: NetworkState?) {
+
+            val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
+            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnection)
+
             if (networkState != null && networkState == NetworkState.LOADING) {
-//                itemView.progressBar.visibility = View.VISIBLE
+                progressBar.visibility = View.VISIBLE
             } else {
-                //                itemView.progressBar.visibility = View.VISIBLE
+                progressBar.visibility = View.GONE
             }
-            // todo show message when ENDOFLIST, ERROR;
+
+            if (networkState != null && networkState == NetworkState.ERROR) {
+                errorMessage.visibility = View.VISIBLE
+                errorMessage.text = networkState.msg
+            } else {
+                errorMessage.visibility = View.GONE
+            }
         }
     }
 
