@@ -10,7 +10,7 @@ import com.example.moviepicker.data.model.top.movie.TopType
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class FilmPagingSource(private val apiService: KPApiService, private val compositeDisposable: CompositeDisposable) :
+class MoviePagingSource(private val apiService: KPApiService, private val compositeDisposable: CompositeDisposable) :
     PagingSource<Int, TopItem>() {
 
     private var page = FIRST_PAGE
