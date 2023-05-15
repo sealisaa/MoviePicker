@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import api.model.movie.Film
 import com.example.moviepicker.R
-import java.util.LinkedList
+import com.example.moviepicker.data.model.movie.Film
+import java.util.*
 
 
 class VerticalMovieCardAdapter(val fragment: Fragment) : RecyclerView.Adapter<VerticalMovieCardAdapter.PopularMoviesViewHolder>() {
