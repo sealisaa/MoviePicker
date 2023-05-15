@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.moviepicker.R
 import com.example.moviepicker.databinding.FragmentFiltersBinding
-import java.util.logging.Logger
 
 
 class FiltersFragment : Fragment() {
@@ -39,4 +38,5 @@ class FiltersFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
