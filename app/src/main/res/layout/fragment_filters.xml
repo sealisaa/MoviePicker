@@ -80,15 +80,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textViewYear"
         />
-        <SeekBar
+        <com.google.android.material.slider.RangeSlider
                 android:max="2023"
                 android:min="1888"
-                android:progress="1"
                 android:thumb="@drawable/ic_seekbar_thumb"
                 android:progressDrawable="@drawable/custom_seekbar"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/seekBarYear"/>
+                android:id="@+id/seekBarYear"
+                android:layout_height="wrap_content"
+                android:valueFrom="20.0"
+                android:valueTo="110.0"
+                app:values="@array/initial_slider_values" tools:ignore="SpeakableTextPresentCheck"/>
         <TextView
                 android:text="@string/country"
                 android:textColor="@color/white"
@@ -152,8 +155,10 @@
             android:layout_height="wrap_content" android:id="@+id/applyFiltersButton"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="20dp"
-            android:textSize="16sp"
+            android:textSize="25sp"
             app:fontFamily="@font/roboto_bold"
-            android:background="@color/mild_yellow"/>
+            android:background="@color/dark_grey"
+            style="@style/Widget.MaterialComponents.TimePicker.Button"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

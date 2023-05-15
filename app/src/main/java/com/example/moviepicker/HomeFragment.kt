@@ -16,9 +16,9 @@ class HomeFragment : Fragment() {
 
     private val listOfTitles = arrayListOf<String>()
     private fun loadTitles() {
-        listOfTitles.add("Популярное")
-        listOfTitles.add("Жанры")
-        listOfTitles.add("Топ-250")
+        listOfTitles.add(resources.getString(R.string.popular))
+        listOfTitles.add(resources.getString(R.string.genresAmount))
+        listOfTitles.add(resources.getString(R.string.top))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
