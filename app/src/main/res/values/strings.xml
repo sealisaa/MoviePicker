@@ -47,7 +47,7 @@
         <item>Другие</item>
     </string-array>
 
-    <string name="MPAA">Age</string>
+    <string name="MPAA">Возраст</string>
     <string-array name="mpaas">
         <item>18</item>
         <item>16</item>
@@ -57,7 +57,7 @@
     </string-array>
 
     <string name="key_word">Key word</string>
-
+    <string name="connection_problem">Connection problems!</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

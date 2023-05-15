@@ -1,5 +1,6 @@
 package com.example.moviepicker.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,8 +29,11 @@ class GenresAdapter(private val fragment: Fragment, private val genreTitles: Mut
     }
 
     override fun onBindViewHolder(holder: GenresViewHolder, position: Int) {
+        val bundle = Bundle()
         holder.bindView(position)
         holder.genreButton.setOnClickListener {
+            // todo navigate to description fragment + passing movie id
+//            bundle.putString("genreId", genreTitles[position])
             fragment.findNavController().navigate(R.id.genreMoviesFragment)
         }
     }
