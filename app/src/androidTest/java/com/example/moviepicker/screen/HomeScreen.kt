@@ -1,8 +1,9 @@
 package com.example.moviepicker.screen
 
-import com.example.moviepicker.MainActivity
+
 import com.kaspersky.kaspresso.screens.KScreen
 import com.example.moviepicker.R
+import com.example.moviepicker.ui.MainActivity
 import io.github.kakaocup.kakao.text.KButton
 
 
