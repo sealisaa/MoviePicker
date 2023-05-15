@@ -10,17 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviepicker.R
 
 
-class GenresAdapter(private val fragment: Fragment, private val genreTitles: MutableList<String>, private val genreCovers: MutableList<Int>) : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
-//    var genreTitles = arrayOf
-//    (
-//        "", "Триллеры", "Комедии", "Ужасы"
-//    )
-//    var genreCovers = intArrayOf(
-//        R.drawable.cartoon,
-//        R.drawable.thriller,
-//        R.drawable.comedy,
-//        R.drawable.horror
-//    )
+class GenresAdapter(val fragment: Fragment) : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
+    var genreTitles = arrayOf(
+        "Мультфильмы", "Триллеры", "Комедии", "Ужасы"
+    )
+    var genreCovers = intArrayOf(
+        R.drawable.cartoon,
+        R.drawable.thriller,
+        R.drawable.comedy,
+        R.drawable.horror
+    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenresViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.genre_card, parent, false)

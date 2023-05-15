@@ -86,6 +86,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/saveButton"
                 app:layout_constraintBottom_toBottomOf="@+id/poster" android:contentDescription="TODO"
                 android:layout_marginBottom="7dp" android:layout_marginEnd="7dp" tools:ignore="TouchTargetSizeCheck"/>
+        <ImageButton
+                android:id="@+id/linkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_external_link"
+                android:background="@drawable/ic_shape_button"
+                app:layout_constraintStart_toEndOf="@+id/saveButton"
+                app:layout_constraintBottom_toBottomOf="@+id/poster" android:contentDescription="TODO"
+                android:layout_marginBottom="7dp" android:layout_marginStart="7dp" tools:ignore="TouchTargetSizeCheck"/>
         <RatingBar
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
