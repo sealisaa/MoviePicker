@@ -18,6 +18,7 @@
                 android:visibility="gone"
                 android:layout_width="wrap_content" android:layout_height="match_parent"
                 android:layout_marginBottom="1dp"
+                android:indeterminateTint="@color/mild_yellow"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
         <TextView

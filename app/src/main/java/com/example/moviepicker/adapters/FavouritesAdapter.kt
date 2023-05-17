@@ -13,11 +13,16 @@ import com.bumptech.glide.Glide
 import com.example.moviepicker.R
 import com.example.moviepicker.data.model.movie.Film
 
-class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: List<Film>) :
+class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: MutableList<Film>) :
     RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder>() {
-    fun updateList(newList: List<Film>) {
+    fun updateList(newList: MutableList<Film>) {
         favouriteMoviesList = newList
         notifyDataSetChanged() //or you can implement a DiffUtil.Callback
+    }
+
+    fun notifyRemoved(i: Int) {
+        favouriteMoviesList.removeAt(i)
+        notifyItemRemoved(i)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
@@ -57,7 +62,7 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: List<Fi
 
         fun bindView(position: Int) {
             Glide.with(fragment).load(favouriteMoviesList[position].data.posterUrl).into(moviePoster)
-            movieTitle.text = favouriteMoviesList[position].data.nameEn
+            movieTitle.text = favouriteMoviesList[position].data.nameRu
             movieRating.text = favouriteMoviesList[position].rating?.rating.toString()
             movieDirector.text = favouriteMoviesList[position].data.year
         }

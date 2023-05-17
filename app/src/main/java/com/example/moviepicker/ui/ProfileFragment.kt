@@ -17,6 +17,7 @@ import com.example.moviepicker.data.model.movie.Film
 import com.example.moviepicker.data.repository.FavouriteMoviesRepository
 import com.example.moviepicker.databinding.FragmentProfileBinding
 import com.example.moviepicker.ui.viewmodel.FavouritesViewModel
+import java.lang.StringBuilder
 
 class ProfileFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class ProfileFragment : Fragment() {
     private lateinit var adapter: FavouritesAdapter
 
     private val favouriteMoviesList: MutableList<Film> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,11 +64,43 @@ class ProfileFragment : Fragment() {
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
+
+        binding.textViewStatistics.text = setStatistics()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.lastItemDeleted != -1) {
+            adapter.notifyRemoved(viewModel.lastItemDeleted)
+            viewModel.lastItemDeleted = -1
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setStatistics() : String {
+        val exceptions = arrayListOf(11, 12, 13, 14)
+        val textMovies =
+            when (viewModel.savedMoviesId.size % 10) {
+                1 -> "Добавлен "
+                else -> "Добавлено "
+            }
+        val textAdded =
+            if (viewModel.savedMoviesId.size % 100 in exceptions) {
+                " фильмов"
+            } else {
+                when (viewModel.savedMoviesId.size % 10) {
+                    1 -> " фильм"
+                    2, 3, 4 -> " фильма"
+                    else -> " фильмов"
+                }
+            }
+        return StringBuilder().append(textMovies)
+            .append(viewModel.savedMoviesId.size)
+            .append(textAdded).toString()
     }
 
 }
