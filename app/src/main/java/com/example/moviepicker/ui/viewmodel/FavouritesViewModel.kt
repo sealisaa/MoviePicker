@@ -22,6 +22,8 @@ class FavouritesViewModel(
     val savedMoviesId: List<Int>
         get() = _savedMoviesId
 
+    var lastItemDeleted: Int = -1
+
     fun saveMovie(movieId: Int) {
         this._savedMoviesId.add(movieId)
         filmRepository.fetchMovieDetails(compositeDisposable, _savedMoviesId)
@@ -30,6 +32,7 @@ class FavouritesViewModel(
     }
 
     fun deleteMovie(movieId: Int) {
+        lastItemDeleted = savedMoviesId.indexOf(movieId)
         this._savedMoviesId.remove(movieId)
     }
 

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import api.service.KPApiService
 import com.example.moviepicker.R
@@ -44,6 +45,12 @@ class MainActivity : AppCompatActivity() {
         val apiService: KPApiService = DBClient.getClient()
         movieRepository = FavouriteMoviesRepository(apiService)
         viewModel = getViewModel(favouriteMoviesId, this)
+
+
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            NavigationUI.onNavDestinationSelected(it, navController)
+            return@setOnItemSelectedListener true
+        }
 
         initialize()
     }
