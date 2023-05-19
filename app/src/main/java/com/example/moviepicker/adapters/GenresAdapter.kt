@@ -1,6 +1,7 @@
 package com.example.moviepicker.adapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviepicker.R
 
 
-class GenresAdapter(private val fragment: Fragment, private val genreTitles: MutableList<String>, private val genreCovers: MutableList<Int>) : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
+class GenresAdapter(
+    private val fragment: Fragment,
+    private val genreTitles: MutableList<String>,
+    private val genreCovers: MutableList<Int>
+) : RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
 //    var genreTitles = arrayOf
 //    (
 //        "", "Триллеры", "Комедии", "Ужасы"
@@ -33,8 +38,9 @@ class GenresAdapter(private val fragment: Fragment, private val genreTitles: Mut
         holder.bindView(position)
         holder.genreButton.setOnClickListener {
             // todo navigate to description fragment + passing movie id
-//            bundle.putString("genreId", genreTitles[position])
-            fragment.findNavController().navigate(R.id.genreMoviesFragment)
+            bundle.putString("genreTitle", genreTitles[position])
+            Log.e("genreTitle", genreTitles[position])
+            fragment.findNavController().navigate(R.id.genreMoviesFragment, bundle)
         }
     }
 

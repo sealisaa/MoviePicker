@@ -16,8 +16,8 @@ class MoviesByFiltersPagedListRepository(private val apiService: KPApiService) {
     lateinit var filmPagedList: LiveData<PagedList<FilmItem>>
     lateinit var popularFilmsDataSourceFactory: MoviesByFiltersDataSourceFactory
 
-    fun fetchLiveMoviePagedList (compositeDisposable: CompositeDisposable) : LiveData<PagedList<FilmItem>> {
-        popularFilmsDataSourceFactory = MoviesByFiltersDataSourceFactory(apiService, compositeDisposable)
+    fun fetchLiveMoviePagedList(compositeDisposable: CompositeDisposable, genreId: Int?): LiveData<PagedList<FilmItem>> {
+        popularFilmsDataSourceFactory = MoviesByFiltersDataSourceFactory(apiService, compositeDisposable, genreId)
 
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)

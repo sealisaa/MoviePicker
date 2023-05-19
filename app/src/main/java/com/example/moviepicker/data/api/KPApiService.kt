@@ -1,5 +1,6 @@
 package api.service
 
+import android.util.Log
 import com.example.moviepicker.data.api.KPApiClientService
 import com.example.moviepicker.data.model.movie.AppendType
 import com.example.moviepicker.data.model.movie.Film
@@ -89,7 +90,7 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
 //    }
 
 
-    fun getFilmsByFileters(
+    fun getFilmsByFilters(
         countryId: Int? = null,
         genreId: Int? = null,
         ratingFrom: Int? = null,
@@ -99,10 +100,17 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
         keyword: String? = null,
         page: Int? = null
     ): Single<FilmsByFilters> {
+        Log.e("request by genre", MAIN_API_URL_V2_2 +
+            ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (genreId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
+                    "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
+                    "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
+                    "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(
+                1
+            ))
         return Single.fromCallable {
             kpApiClientService.request(
                 MAIN_API_URL_V2_2,
-                ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (countryId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
+                ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (genreId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
                         "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
                         "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
                         "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(
