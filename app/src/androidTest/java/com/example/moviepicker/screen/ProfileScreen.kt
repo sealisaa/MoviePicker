@@ -18,4 +18,11 @@ object ProfileScreen : KScreen<ProfileScreen>() {
     val textViewStatistics = KTextView { withId(R.id.textViewStatistics) }
     val textViewAdded = KTextView { withId(R.id.textViewAdded) }
     val recycler = KRecyclerView(builder = { withId(R.id.moviesRecyclerView) }, {})
+
+    fun simpleClick(button: KButton) {
+        button {
+            isVisible()
+            click()
+        }
+    }
 }

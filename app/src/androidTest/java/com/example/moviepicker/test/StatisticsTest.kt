@@ -22,7 +22,7 @@ class StatisticsTest : TestCase() {
         step("Compare statistics size with actual rv size") {
             ProfileScreen {
                 textViewStatistics {
-                    // by adding " " + number + " " we exclude the case when statistics contains number 67 or etc
+                    testLogger.i("by adding \" \" + number + \" \" we exclude the case when statistics contains number 67 or etc")
                     containsText(" " + ProfileScreen.recycler.getSize().toString() + " ")
                 }
             }

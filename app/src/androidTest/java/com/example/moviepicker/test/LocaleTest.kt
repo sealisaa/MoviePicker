@@ -11,7 +11,20 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
 
+
+
 class LocaleTest : TestCase() {
+
+    object Text {
+        const val RUSSIAN = "Русский"
+        const val SETTINGS = "Настройки"
+        const val LANGUAGE = "Язык"
+        const val MY_MOVIES = "Мои фильмы"
+        const val ADDED = "Добавлено"
+        const val FAVOURITES = "Избранное"
+        const val MOVIES_SERIES = "Фильмы, сериалы"
+        const val FIND_MOVIE = "Найти фильм"
+    }
 
     @get:Rule
     val activityRule = activityScenarioRule<MainActivity>()
@@ -23,60 +36,51 @@ class LocaleTest : TestCase() {
         }
         step("Transition to Settings") {
             ProfileScreen {
-                settingsButton {
-                    isVisible()
-                    click()
-                }
+                simpleClick(settingsButton)
             }
         }
         step("Check if russian locale is set") {
             SettingsScreen {
                 inputLayout {
-                    edit.containsText("Русский")
+                    edit.containsText(Text.RUSSIAN)
                 }
             }
         }
         step("Check if Profile screen is in russian") {
             SettingsScreen {
                 textViewTitle {
-                    hasText("Настройки")
+                    hasText(Text.SETTINGS)
                 }
                 textViewLanguage {
-                    hasText("Язык")
+                    hasText(Text.LANGUAGE)
                 }
-                backButton {
-                    isVisible()
-                    click()
-                }
+                simpleClick(backButton)
             }
             ProfileScreen {
                 textViewTitle {
-                    hasText("Мои фильмы")
+                    hasText(Text.MY_MOVIES)
                 }
                 textViewStatistics {
-                    containsText("Добавлено")
+                    containsText(Text.ADDED)
                 }
                 textViewAdded {
-                    hasText("Избранное")
+                    hasText(Text.FAVOURITES)
                 }
             }
 
         }
         step("Transition to Search screen") {
             HomeScreen {
-                searchFragmentButton {
-                    isVisible()
-                    click()
-                }
+                simpleClick(searchFragmentButton)
             }
         }
         step("Check if Search screen is in russian") {
             SearchScreen {
                 editTextSearch {
-                    hasHint("Фильмы, сериалы")
+                    hasHint(Text.MOVIES_SERIES)
                 }
                 textView {
-                    hasText("Найти фильм")
+                    hasText(Text.FIND_MOVIE)
                 }
             }
         }

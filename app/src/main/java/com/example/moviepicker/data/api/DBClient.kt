@@ -19,10 +19,10 @@ class FilmDetailsRepository (private val apiService: KPApiService) {
 
     lateinit var movieDetailsNetworkDataSource: MovieDetailsNetworkDataSource
 
-    fun fetchFilmDetails (compositeDisposable: CompositeDisposable, filmId: Int) : LiveData<Film> {
+    fun fetchFilmDetails (compositeDisposable: CompositeDisposable, movieId: Int) : LiveData<Film> {
 
         movieDetailsNetworkDataSource = MovieDetailsNetworkDataSource(apiService, compositeDisposable)
-        movieDetailsNetworkDataSource.fetchMovieDetails(filmId)
+        movieDetailsNetworkDataSource.fetchMovieDetails(movieId)
 
         return movieDetailsNetworkDataSource.downloadedMovieResponse
     }
