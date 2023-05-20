@@ -35,6 +35,8 @@ class FiltersFragment : Fragment() {
         val arrayAdapterGenre = ArrayAdapter(requireContext(), R.layout.dropdown_item, Genress)
         binding.autoCompleteTextViewGenre.setAdapter(arrayAdapterGenre)
 
+        binding.seekBarYear.stepSize = 1.0f
+
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

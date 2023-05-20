@@ -9,8 +9,14 @@
     <string name="settings">Настройки</string>
     <string name="language">Язык</string>
     <string-array name="languages">
-        <item>Русский</item>
-        <item>English</item>
+        <item name ="ru">
+            <string>Russian</string>
+            <id>ru</id>
+        </item>
+        <item name ="en">
+            <string>English</string>
+            <id>en</id>
+        </item>
     </string-array>
     <string name="movie_description">Мирная и процветающая планета Набу. Торговая федерация, не желая платить налоги,
         вступает в прямой конфликт с королевой Амидалой, правящей на планете, что приводит к войне. На стороне королевы
