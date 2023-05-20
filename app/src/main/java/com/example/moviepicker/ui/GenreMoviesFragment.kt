@@ -37,7 +37,7 @@ class GenreMoviesFragment : Fragment() {
         val movieAdapter = MoviesByGenrePagedListAdapter(this)
         var gridLayoutManager = GridLayoutManager(this.context, 3)
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            gridLayoutManager = GridLayoutManager(this.context, 3)
+            gridLayoutManager = GridLayoutManager(this.context, 5)
         }
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
