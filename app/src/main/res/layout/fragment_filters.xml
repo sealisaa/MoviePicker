@@ -121,8 +121,8 @@
                 android:layout_width="match_parent"
                 android:id="@+id/seekBarYear"
                 android:layout_height="wrap_content"
-                android:valueFrom="1888.0"
-                android:valueTo="2023.0"
+                android:valueFrom="1888"
+                android:valueTo="2023"
                 app:values="@array/initial_slider_values" tools:ignore="SpeakableTextPresentCheck"/>
         <!--        <Spinner-->
 <!--                android:layout_width="match_parent"-->
