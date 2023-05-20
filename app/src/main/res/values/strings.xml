@@ -29,17 +29,12 @@
         <item>Italy</item>
         <item>France</item>
         <item>Germany</item>
-        <item>UAR</item>
-        <item>China</item>
-        <item>Korea</item>
-        <item>Other</item>
-        <item>Transdniestria</item>
     </string-array>
     <string-array name="Genress">
-        <item>Fantasy</item>
-        <item>Drama</item>
-        <item>Action</item>
-        <item>Comedy</item>
+        <item>Cartoons</item>
+        <item>Thrillers</item>
+        <item>Horrors</item>
+        <item>Comedies</item>
     </string-array>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="movie_description">Мирная и процветающая планета Набу. Торговая федерация, не желая платить налоги,
@@ -52,10 +47,10 @@
     <string name="rating">Rating</string>
     <string name="genre">Genre</string>
     <string-array name="genres">
-        <item>Фантастика</item>
-        <item>Драма</item>
-        <item>Боевик</item>
-        <item>Комедия</item>
+        <item>Мультфильмы</item>
+        <item>Триллеры</item>
+        <item>Комедии</item>
+        <item>Ужасы</item>
     </string-array>
     <string name="year">Year</string>
 
@@ -67,10 +62,6 @@
         <item>Италия</item>
         <item>Франция</item>
         <item>Германия</item>
-        <item>ЮАР</item>
-        <item>Китай</item>
-        <item>Корея</item>
-        <item>Другие</item>
     </string-array>
 
     <string name="MPAA">Возраст</string>
@@ -182,7 +173,7 @@
     <string name="genresAmount">Genres</string>
     <string name="cartoon">Cartoons</string>
     <string name="thriller">Thrillers</string>
-    <string name="comedy">Comedy</string>
+    <string name="comedy">Comedies</string>
     <string name="horror">Horrors</string>
     <string name="added">Added</string>
     <string name="films">films</string>

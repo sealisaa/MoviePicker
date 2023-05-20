@@ -23,10 +23,10 @@
     <string name="genre">Жанр</string>
 
     <string-array name="Genress">
-        <item>Фантастика</item>
-        <item>Драма</item>
-        <item>Боевик</item>
-        <item>Комедия</item>
+        <item>Мультфильмы</item>
+        <item>Триллеры</item>
+        <item>Комедии</item>
+        <item>Ужасы</item>
     </string-array>
     <string name="year">Год</string>
 
@@ -38,11 +38,6 @@
         <item>Италия</item>
         <item>Франция</item>
         <item>Германия</item>
-        <item>ЮАР</item>
-        <item>Китай</item>
-        <item>Корея</item>
-        <item>Другие</item>
-        <item>Преднистровье</item>
     </string-array>
 
     <string name="MPAA">Возраст</string>
@@ -154,8 +149,8 @@
     <string name="genresAmount">Жанры</string>
     <string name="thriller">Триллеры</string>
     <string name="cartoon">Мультфильмы</string>
-    <string name="comedy">Комедияы</string>
-    <string name="horror">Ужастики</string>
+    <string name="comedy">Комедии</string>
+    <string name="horror">Ужасы</string>
     <string name="added">Добавлено</string>
     <string name="films">фильмов</string>
     <string name="save">Сохранить</string>

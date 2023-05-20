@@ -31,10 +31,12 @@ class GenreMoviesFragment : Fragment() {
         _binding = FragmentGenreMoviesBinding.inflate(inflater)
         val apiService: KPApiService = DBClient.getClient()
         val genreTitle = arguments?.getString("genreTitle") ?: ""
+        binding.genreTitle.text = genreTitle
         movieRepository = MoviesByFiltersPagedListRepository(apiService)
         viewModel = getViewModel(getGenreByTitle(genreTitle))
         val movieAdapter = MoviesByGenrePagedListAdapter(this)
         val gridLayoutManager = GridLayoutManager(this.context, 3)
+
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 val viewType = movieAdapter.getItemViewType(position)
@@ -96,7 +98,7 @@ class GenreMoviesFragment : Fragment() {
     private fun getGenreByTitle(title: String): Int? {
         return when (title) {
             "Thrillers", "Триллеры" -> 1
-            "Comedy", "Комедия" -> 13
+            "Comedies", "Комедии" -> 13
             "Cartoons", "Мультфильмы" -> 18
             "Horrors", "Ужасы" -> 17
             else -> null

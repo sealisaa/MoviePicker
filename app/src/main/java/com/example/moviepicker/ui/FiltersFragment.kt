@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.moviepicker.R
 import com.example.moviepicker.databinding.FragmentFiltersBinding
 import java.util.logging.Logger
+import kotlin.math.roundToInt
 
 
 class FiltersFragment : Fragment() {
@@ -23,10 +24,6 @@ class FiltersFragment : Fragment() {
     ): View? {
         _binding = FragmentFiltersBinding.inflate(inflater, container, false)
 
-        val MPAAs = resources.getStringArray(R.array.MPAAs)
-        val arrayAdapterMPAA = ArrayAdapter(requireContext(), R.layout.dropdown_item, MPAAs)
-        binding.autoCompleteTextViewMPAA.setAdapter(arrayAdapterMPAA)
-
         val Countrys = resources.getStringArray(R.array.Countrys)
         val arrayAdapterCountry = ArrayAdapter(requireContext(), R.layout.dropdown_item, Countrys)
         binding.autoCompleteTextViewCountry.setAdapter(arrayAdapterCountry)
@@ -35,13 +32,26 @@ class FiltersFragment : Fragment() {
         val arrayAdapterGenre = ArrayAdapter(requireContext(), R.layout.dropdown_item, Genress)
         binding.autoCompleteTextViewGenre.setAdapter(arrayAdapterGenre)
 
+
+        binding.seekBarYear.setLabelFormatter { value: Float ->
+            return@setLabelFormatter "${value.roundToInt()}"
+        }
+
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.applyFiltersButton.setOnClickListener {
-            findNavController().navigate(R.id.action_filtersFragment_to_searchResultFragment)
+            val bundle = Bundle()
+            bundle.putString("keyword", binding.editTextKeyword.text.toString())
+            bundle.putInt("rating", binding.seekBarRating.progress)
+            bundle.putInt("yearFrom", binding.seekBarYear.valueFrom.toInt())
+            bundle.putInt("yearTo", binding.seekBarYear.valueTo.toInt())
+            bundle.putString("countryName", binding.autoCompleteCountry.editText?.text.toString())
+            bundle.putString("genreName", binding.autoCompleteGenre.editText?.text.toString())
+            findNavController().navigate(R.id.action_filtersFragment_to_searchResultFragment, bundle)
         }
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
