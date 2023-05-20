@@ -8,13 +8,14 @@ import io.reactivex.disposables.CompositeDisposable
 
 class MoviesByFiltersDataSourceFactory(
     private val apiService: KPApiService,
-    private val compositeDisposable: CompositeDisposable
+    private val compositeDisposable: CompositeDisposable,
+    private val genreId: Int?
 ) : DataSource.Factory<Int, FilmItem>() {
 
     val filmLiveDataSource = MutableLiveData<MovieByFiltersDataSource>()
 
     override fun create(): DataSource<Int, FilmItem> {
-        val popularFilmDataSource = MovieByFiltersDataSource(apiService, compositeDisposable)
+        val popularFilmDataSource = MovieByFiltersDataSource(apiService, compositeDisposable, genreId)
 
         filmLiveDataSource.postValue(popularFilmDataSource)
         return popularFilmDataSource

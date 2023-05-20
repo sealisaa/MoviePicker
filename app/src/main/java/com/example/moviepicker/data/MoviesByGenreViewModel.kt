@@ -8,12 +8,13 @@ import com.example.moviepicker.data.model.movie.FilmItem
 import com.example.moviepicker.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
-class MoviesByGenreViewModel(private val filmRepository: MoviesByFiltersPagedListRepository) : ViewModel() {
+class MoviesByGenreViewModel(private val filmRepository: MoviesByFiltersPagedListRepository, genreId: Int?) :
+    ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
     val moviePagedList: LiveData<PagedList<FilmItem>> by lazy {
-        filmRepository.fetchLiveMoviePagedList(compositeDisposable)
+        filmRepository.fetchLiveMoviePagedList(compositeDisposable, genreId)
     }
 
     val networkState: LiveData<NetworkState> by lazy {
