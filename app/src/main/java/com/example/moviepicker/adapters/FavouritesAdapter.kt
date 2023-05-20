@@ -1,6 +1,7 @@
 package com.example.moviepicker.adapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,11 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
     }
 
     fun notifyRemoved(i: Int) {
-        favouriteMoviesList.removeAt(i)
+        try {
+            favouriteMoviesList.removeAt(i)
+        } catch (e: IndexOutOfBoundsException) {
+            Log.e("FavouritesAdapter", e.stackTraceToString())
+        }
         notifyItemRemoved(i)
     }
 

@@ -39,6 +39,8 @@ class DescriptionFragment : Fragment() {
         _binding = FragmentDescriptionBinding.inflate(inflater)
 
         val movieId = arguments?.getInt("movieId") ?: -1
+        Log.d("DescriptionFragment", movieId.toString())
+
 
         with(binding) {
             binding.backButton.setOnClickListener {
@@ -70,6 +72,7 @@ class DescriptionFragment : Fragment() {
 
                 movieName.text = it.data.nameRu
                 textViewDescription.text = it.data.description
+                textViewRating.text = it.rating?.rating.toString()
                 val kinopoiskId = it.data.kinopoiskId
 
                 if (favouritesViewModel.savedMoviesId.contains(kinopoiskId)) {
@@ -81,7 +84,7 @@ class DescriptionFragment : Fragment() {
 
         viewModel.networkState.observe(viewLifecycleOwner) {
             with (binding) {
-                ratingBar.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
+                ratingField.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 saveButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 linkButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 progressBar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
@@ -93,10 +96,10 @@ class DescriptionFragment : Fragment() {
         return binding.root
     }
 
-    private fun getViewModel(filmId: Int): MovieViewModel {
+    private fun getViewModel(movieId: Int): MovieViewModel {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return MovieViewModel(movieRepository, filmId) as T
+                return MovieViewModel(movieRepository, movieId) as T
             }
         })[MovieViewModel::class.java]
     }

@@ -9,7 +9,9 @@
             android:name="com.example.moviepicker.ui.PopularMoviesFragment"
             android:label="PopularMoviesFragment">
         <action android:id="@+id/action_popularMoviesFragment_to_descriptionFragment"
-                app:destination="@id/descriptionFragment"/>
+                app:destination="@id/descriptionFragment" app:exitAnim="@anim/slide_in"
+                app:popExitAnim="@anim/slide_in" app:enterAnim="@anim/slide_in"
+                app:popEnterAnim="@anim/slide_in"/>
     </fragment>
 
     <fragment
@@ -26,7 +28,8 @@
             android:id="@+id/genresFragment" android:name="com.example.moviepicker.ui.GenresFragment"
             android:label="fragment_genres" tools:layout="@layout/fragment_genres">
         <action android:id="@+id/action_genresFragment_to_descriptionFragment"
-                app:destination="@id/descriptionFragment"/>
+                app:destination="@id/descriptionFragment" app:exitAnim="@anim/slide_out_right"
+                app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment android:id="@+id/homeFragment"
@@ -49,7 +52,8 @@
               tools:layout="@layout/fragment_profile">
         <action android:id="@+id/action_profileFragment_to_settingsFragment" app:destination="@id/settingsFragment"/>
         <action android:id="@+id/action_profileFragment_to_descriptionFragment"
-                app:destination="@id/descriptionFragment"/>
+                app:destination="@id/descriptionFragment" app:exitAnim="@anim/slide_out_right"
+                app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
             android:id="@+id/filtersFragment" android:name="com.example.moviepicker.ui.FiltersFragment"
@@ -58,12 +62,21 @@
                 app:destination="@id/searchResultFragment"/>
     </fragment>
     <fragment android:id="@+id/genreMoviesFragment" android:name="com.example.moviepicker.ui.GenreMoviesFragment"
-              android:label="fragment_genre_movies" tools:layout="@layout/fragment_genre_movies"/>
+              android:label="fragment_genre_movies" tools:layout="@layout/fragment_genre_movies">
+        <action android:id="@+id/action_genreMoviesFragment_to_descriptionFragment"
+                app:destination="@id/descriptionFragment" app:exitAnim="@anim/slide_out_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
             android:id="@+id/searchResultFragment" android:name="com.example.moviepicker.ui.SearchResultFragment"
             android:label="fragment_search_result" tools:layout="@layout/fragment_search_result"/>
     <fragment
             android:id="@+id/settingsFragment" android:name="com.example.moviepicker.ui.SettingsFragment"
             android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
+    <fragment android:id="@+id/top250Fragment" android:name="com.example.moviepicker.ui.Top250Fragment"
+              android:label="fragment_top250" tools:layout="@layout/fragment_top250">
+        <action android:id="@+id/action_top250Fragment_to_descriptionFragment"
+                app:destination="@id/descriptionFragment"/>
+    </fragment>
 
 </navigation>
