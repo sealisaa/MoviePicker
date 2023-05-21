@@ -54,14 +54,12 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
         var movieTitle: TextView
         var moviePoster: ImageView
         var movieRating: TextView
-        var movieDirector: TextView
 
         init {
             movieCard = view.findViewById(R.id.movieCard)
             movieTitle = view.findViewById(R.id.movieTitle)
             moviePoster = view.findViewById(R.id.moviePoster)
             movieRating = view.findViewById(R.id.movieRating)
-            movieDirector = view.findViewById(R.id.directorName)
             view.setOnClickListener(this)
         }
 
@@ -69,7 +67,6 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
             Glide.with(fragment).load(favouriteMoviesList[position].data.posterUrl).into(moviePoster)
             movieTitle.text = favouriteMoviesList[position].data.nameRu
             movieRating.text = favouriteMoviesList[position].rating?.rating.toString()
-            movieDirector.text = favouriteMoviesList[position].data.year
         }
 
         override fun onClick(view: View) {

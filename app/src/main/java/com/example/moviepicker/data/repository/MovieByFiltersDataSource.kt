@@ -11,7 +11,13 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieByFiltersDataSource(
     private val apiService: KPApiService,
-    private val compositeDisposable: CompositeDisposable
+    private val compositeDisposable: CompositeDisposable,
+    private val countryId: Int? = null,
+    private val genreId: Int? = null,
+    private val rating: Int? = null,
+    private val yearFrom: Int? = null,
+    private val yearTo: Int? = null,
+    private val keyword: String? = null
 ) :
     PageKeyedDataSource<Int, FilmItem>() {
 
@@ -20,9 +26,19 @@ class MovieByFiltersDataSource(
     val networkState: MutableLiveData<NetworkState> = MutableLiveData()
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, FilmItem>) {
+        Log.e("genreId", "inside request we have " + genreId.toString())
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getFilmsByFileters(genreId = 1, page = params.key)
+            apiService.getFilmsByFilters(
+                countryId = countryId,
+                genreId = genreId,
+                ratingFrom = rating,
+                ratingTo = 10,
+                yearFrom = yearFrom,
+                yearTo = yearTo,
+                keyword = keyword,
+                page = params.key
+            )
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
@@ -41,14 +57,25 @@ class MovieByFiltersDataSource(
         )
     }
 
+
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, FilmItem>) {
         TODO("Not yet implemented")
     }
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, FilmItem>) {
+        Log.e("genreId", "inside request we have " + genreId.toString())
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getFilmsByFileters(genreId = 1, page = page)
+            apiService.getFilmsByFilters(
+                countryId = countryId,
+                genreId = genreId,
+                ratingFrom = rating,
+                ratingTo = 10,
+                yearFrom = yearFrom,
+                yearTo = yearTo,
+                keyword = keyword,
+                page = page
+            )
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
