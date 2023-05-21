@@ -6,7 +6,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.github.kittinunf.fuel.httpGet
 
-// todo add logs
 internal class KPApiClientService(private val token: String, private val timeout: Int) {
     private val mapper: ObjectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
 
@@ -38,13 +37,13 @@ internal class KPApiClientService(private val token: String, private val timeout
 
         when (result) {
             is com.github.kittinunf.result.Result.Failure -> {
-                Log.e("HTTP-status: ", response.responseMessage.toString())
+                Log.d("HTTP-status: ", response.responseMessage)
                 Log.e("ERROR: ", response.statusCode.toString())
                 return null
             }
 
             is com.github.kittinunf.result.Result.Success -> {
-                Log.e("HTTP-status: ", response.statusCode.toString())
+                Log.d("HTTP-status: ", response.statusCode.toString())
                 return mapper.readValue(result.get(), clazz)
             }
         }

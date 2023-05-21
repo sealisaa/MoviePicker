@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         movieRepository = FavouriteMoviesRepository(apiService)
         viewModel = getViewModel(favouriteMoviesId, this)
 
-
         binding.bottomNavigationView.setOnItemSelectedListener {
             NavigationUI.onNavDestinationSelected(it, navController)
             return@setOnItemSelectedListener true

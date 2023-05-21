@@ -1,5 +1,7 @@
 package com.example.moviepicker.ui
 
+import android.content.res.Configuration
+import android.graphics.drawable.GradientDrawable.Orientation
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +42,10 @@ class PopularMoviesFragment : Fragment() {
 
         val movieAdapter = MoviesPagedListAdapter(this)
 
-        val gridLayoutManager = GridLayoutManager(this.context, 3)
+        var gridLayoutManager = GridLayoutManager(this.context, 3)
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            gridLayoutManager = GridLayoutManager(this.context, 5)
+        }
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 val viewType = movieAdapter.getItemViewType(position)

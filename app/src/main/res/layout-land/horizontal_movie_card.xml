@@ -6,9 +6,9 @@
              tools:context=".ui.HorizontalMovieCard">
     <androidx.cardview.widget.CardView
             android:id="@+id/movieCard"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent" app:cardBackgroundColor="@color/movie_card_color"
-            app:cardCornerRadius="8dp" android:layout_gravity="center" android:layout_margin="10dp">
+            app:cardCornerRadius="8dp" android:layout_gravity="center" android:layout_margin="20dp">
         <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,11 +31,19 @@
                 android:layout_marginStart="120dp"
                 android:layout_marginTop="10dp"/>
         <TextView
+                android:text="Уэс Андерсон"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/directorName"
+                android:textColor="@color/white"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="30dp"/>
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/movieYear"
-                android:textStyle="bold" android:textColor="@color/white"
+                android:textColor="@color/white"
                 android:layout_marginStart="120dp"
-                android:layout_marginTop="70dp"/>
+                android:layout_marginTop="70dp"
+        />
         <ImageView
                 android:src="@drawable/ic_rating_star"
                 android:layout_width="wrap_content"
@@ -51,5 +59,30 @@
                 android:textSize="14sp"
                 android:layout_marginStart="140dp"
                 android:layout_marginTop="52dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView5" android:layout_marginTop="105dp"
+                android:layout_marginStart="110dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView6" android:layout_marginTop="105dp"
+                android:layout_marginStart="117dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView7" android:layout_marginTop="105dp"
+                android:layout_marginStart="124dp"/>
+        <ImageView
+                android:src="@drawable/ic_oscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView8" android:layout_marginTop="105dp"
+                android:layout_marginStart="131dp"/>
+        <ImageView
+                android:src="@drawable/ic_golden_globe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageView9" android:layout_marginStart="160dp"
+                android:layout_marginTop="105dp"/>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

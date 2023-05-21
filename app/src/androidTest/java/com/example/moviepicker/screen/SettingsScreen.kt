@@ -16,4 +16,11 @@ object SettingsScreen : KScreen<SettingsScreen>() {
     val textViewTitle = KTextView { withId(R.id.textViewSettings) }
     val textViewLanguage = KTextView { withId(R.id.textView) }
     val backButton = KButton { withId(R.id.backButton) }
+
+    fun simpleClick(button: KButton) {
+        button {
+            isVisible()
+            click()
+        }
+    }
 }

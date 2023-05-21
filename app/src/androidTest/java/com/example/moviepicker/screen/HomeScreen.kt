@@ -14,4 +14,11 @@ object HomeScreen : KScreen<HomeScreen>() {
     val profileFragmentButton = KButton { withId(R.id.profileFragment) }
     val searchFragmentButton = KButton { withId(R.id.searchFragment) }
 
+    fun simpleClick(button: KButton) {
+        button {
+            isVisible()
+            click()
+        }
+    }
+
 }

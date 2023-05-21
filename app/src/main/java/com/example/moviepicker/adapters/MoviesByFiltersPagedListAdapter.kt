@@ -75,8 +75,8 @@ class MoviesByFiltersPagedListAdapter(val fragment: Fragment) :
     class MovieItemViewHolder(view: View, val fragment: Fragment) : RecyclerView.ViewHolder(view) {
 
         fun bind(movie: FilmItem?) {
-            val title: TextView = itemView.findViewById(R.id.cardTitle)
-            val year: TextView = itemView.findViewById(R.id.cardYear)
+            val title: TextView = itemView.findViewById(R.id.movieTitle)
+            val year: TextView = itemView.findViewById(R.id.movieYear)
             val poster: ImageView = itemView.findViewById(R.id.moviePoster)
             val rating: TextView = itemView.findViewById(R.id.movieRating)
             val bundle = Bundle()
@@ -99,7 +99,7 @@ class MoviesByFiltersPagedListAdapter(val fragment: Fragment) :
         fun bind(networkState: NetworkState?) {
 
             val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnection)
+//            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnection)
 
             if (networkState != null && networkState == NetworkState.LOADING) {
                 progressBar.visibility = View.VISIBLE
@@ -107,12 +107,12 @@ class MoviesByFiltersPagedListAdapter(val fragment: Fragment) :
                 progressBar.visibility = View.GONE
             }
 
-            if (networkState != null && networkState == NetworkState.ERROR) {
-                errorMessage.visibility = View.VISIBLE
-                errorMessage.text = networkState.msg
-            } else {
-                errorMessage.visibility = View.GONE
-            }
+//            if (networkState != null && networkState == NetworkState.ERROR) {
+//                errorMessage.visibility = View.VISIBLE
+//                errorMessage.text = networkState.msg
+//            } else {
+//                errorMessage.visibility = View.GONE
+//            }
         }
     }
 

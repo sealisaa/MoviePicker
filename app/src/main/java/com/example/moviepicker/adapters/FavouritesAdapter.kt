@@ -1,6 +1,7 @@
 package com.example.moviepicker.adapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,11 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
     }
 
     fun notifyRemoved(i: Int) {
-        favouriteMoviesList.removeAt(i)
+        try {
+            favouriteMoviesList.removeAt(i)
+        } catch (e: IndexOutOfBoundsException) {
+            Log.e("FavouritesAdapter", e.stackTraceToString())
+        }
         notifyItemRemoved(i)
     }
 
@@ -49,19 +54,25 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
         var movieTitle: TextView
         var moviePoster: ImageView
         var movieRating: TextView
+        var movieYear: TextView
 
         init {
             movieCard = view.findViewById(R.id.movieCard)
             movieTitle = view.findViewById(R.id.movieTitle)
             moviePoster = view.findViewById(R.id.moviePoster)
             movieRating = view.findViewById(R.id.movieRating)
+            movieYear = view.findViewById(R.id.movieYear)
             view.setOnClickListener(this)
         }
 
         fun bindView(position: Int) {
             Glide.with(fragment).load(favouriteMoviesList[position].data.posterUrl).into(moviePoster)
             movieTitle.text = favouriteMoviesList[position].data.nameRu
-            movieRating.text = favouriteMoviesList[position].rating?.rating.toString()
+//            val rating = favouriteMoviesList[position].data.ratingKinopoisk ?: " - "
+//            Log.e("FavouritesAdapter", favouriteMoviesList[position].data.ratingKinopoisk.toString())
+//            movieRating.text = rating.toString()
+            movieYear.text = favouriteMoviesList[position].data.year
+
         }
 
         override fun onClick(view: View) {
