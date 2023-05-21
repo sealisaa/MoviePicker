@@ -1,5 +1,6 @@
 package com.example.moviepicker.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +36,11 @@ class GenreMoviesFragment : Fragment() {
         movieRepository = MoviesByFiltersPagedListRepository(apiService)
         viewModel = getViewModel(getGenreByTitle(genreTitle))
         val movieAdapter = MoviesByGenrePagedListAdapter(this)
-        val gridLayoutManager = GridLayoutManager(this.context, 3)
+
+        var gridLayoutManager = GridLayoutManager(this.context, 3)
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            gridLayoutManager = GridLayoutManager(this.context, 5)
+        }
 
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
