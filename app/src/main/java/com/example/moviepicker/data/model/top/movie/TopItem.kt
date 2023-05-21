@@ -2,8 +2,9 @@ package com.example.moviepicker.data.model.top.movie
 
 import com.example.moviepicker.data.model.common.Country
 import com.example.moviepicker.data.model.common.Genre
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class TopItem(
     @JsonProperty("filmId")
     val kinopoiskId: Int,
@@ -14,7 +15,7 @@ data class TopItem(
     val countries: List<Country> = emptyList(),
     val genres: List<Genre> = emptyList(),
     val rating: String?, // can be percent if film has not been released
-    val ratingVoteCount: Int?,
+//    val ratingVoteCount: Int?,
     val posterUrl: String,
     val posterUrlPreview: String,
     val ratingChange: Int?,

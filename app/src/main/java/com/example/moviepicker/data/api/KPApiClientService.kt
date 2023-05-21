@@ -11,19 +11,10 @@ internal class KPApiClientService(private val token: String, private val timeout
 
     companion object {
         const val AUTH_HEADER = "X-API-KEY"
-        const val MAIN_API_URL_V1 = "https://kinopoiskapiunofficial.tech/api/v1"
-        const val MAIN_API_URL_V2_1 = "https://kinopoiskapiunofficial.tech/api/v2.1"
         const val MAIN_API_URL_V2_2 = "https://kinopoiskapiunofficial.tech/api/v2.2"
 
         const val GET_FILM = "/films"
-        const val GET_FRAMES = "/frames"
-        const val GET_VIDEOS = "/videos"
-        const val GET_STUDIOS = "/studios"
-        const val GET_SEQUELS_AND_PREQUELS = "/sequels_and_prequels"
         const val GET_TOP = "/top"
-        const val GET_STAFF = "/staff"
-
-        const val SEARCH_BY_KEYWORD = "/search-by-keyword"
     }
 
 
@@ -44,6 +35,7 @@ internal class KPApiClientService(private val token: String, private val timeout
 
             is com.github.kittinunf.result.Result.Success -> {
                 Log.d("HTTP-status: ", response.statusCode.toString())
+                Log.e("KPApiClientService", result.get())
                 return mapper.readValue(result.get(), clazz)
             }
         }
