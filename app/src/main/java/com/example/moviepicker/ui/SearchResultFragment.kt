@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import api.service.KPApiService
 import com.example.moviepicker.MoviesByFiltersPagedListRepository
-import com.example.moviepicker.adapters.MoviesByFiltersAdapter
+import com.example.moviepicker.adapters.MoviesByFiltersPagedListAdapter
 import com.example.moviepicker.data.MoviesByGenreViewModel
 import com.example.moviepicker.data.api.DBClient
 import com.example.moviepicker.data.repository.NetworkState
@@ -58,7 +58,7 @@ class SearchResultFragment : Fragment() {
         Log.e("data", "countryId " + getCountryIdByTitle(countryName).toString())
         Log.e("data", "genreId " + getGenreIdByTitle(genreName).toString())
 
-        val adapter = MoviesByFiltersAdapter(this)
+        val adapter = MoviesByFiltersPagedListAdapter(this)
         val gridLayoutManager = GridLayoutManager(this.context, 1)
 
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

@@ -17,7 +17,7 @@ import com.example.moviepicker.R
 import com.example.moviepicker.data.model.movie.FilmItem
 import com.example.moviepicker.data.repository.NetworkState
 
-class MoviesByFiltersAdapter(val fragment: Fragment) :
+class MoviesByFiltersPagedListAdapter(val fragment: Fragment) :
     PagedListAdapter<FilmItem, RecyclerView.ViewHolder>(MovieDiffCallback()) {
 
     val DATA_VIEW_TYPE = 1

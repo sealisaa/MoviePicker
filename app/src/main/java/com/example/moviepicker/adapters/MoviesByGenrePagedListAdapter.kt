@@ -1,5 +1,6 @@
 package com.example.moviepicker.adapters
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -94,17 +95,18 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
     }
 
     class NetworkStateItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
         fun bind(networkState: NetworkState?) {
 
             val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnection)
-
+            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnectionGenreMovies)
             if (networkState != null && networkState == NetworkState.LOADING) {
                 progressBar.visibility = View.VISIBLE
             } else {
                 progressBar.visibility = View.GONE
             }
 
+//            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnectionGenreMovies)
             if (networkState != null && networkState == NetworkState.ERROR) {
                 errorMessage.visibility = View.VISIBLE
                 errorMessage.text = networkState.msg
