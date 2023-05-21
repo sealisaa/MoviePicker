@@ -97,7 +97,7 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
         fun bind(networkState: NetworkState?) {
 
             val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnection)
+//            val errorMessage: TextView = itemView.findViewById(R.id.textViewConnection)
 
             if (networkState != null && networkState == NetworkState.LOADING) {
                 progressBar.visibility = View.VISIBLE
@@ -105,12 +105,12 @@ class MoviesByGenrePagedListAdapter(val fragment: Fragment) :
                 progressBar.visibility = View.GONE
             }
 
-            if (networkState != null && networkState == NetworkState.ERROR) {
-                errorMessage.visibility = View.VISIBLE
-                errorMessage.text = networkState.msg
-            } else {
-                errorMessage.visibility = View.GONE
-            }
+//            if (networkState != null && networkState == NetworkState.ERROR) {
+//                errorMessage.visibility = View.VISIBLE
+//                errorMessage.text = networkState.msg
+//            } else {
+//                errorMessage.visibility = View.GONE
+//            }
         }
     }
 

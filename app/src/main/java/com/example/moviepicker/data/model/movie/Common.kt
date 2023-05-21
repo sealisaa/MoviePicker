@@ -11,7 +11,7 @@ data class Common(
     @JsonProperty("filmId")
     val kinopoiskId: Int,
     var nameRu: String,
-    var nameEn: String,
+    var nameEn: String?,
     val webUrl: String,
     val posterUrl: String,
     val posterUrlPreview: String,
