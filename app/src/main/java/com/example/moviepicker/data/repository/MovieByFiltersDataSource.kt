@@ -12,7 +12,12 @@ import io.reactivex.schedulers.Schedulers
 class MovieByFiltersDataSource(
     private val apiService: KPApiService,
     private val compositeDisposable: CompositeDisposable,
-    private val genreId: Int?
+    private val countryId: Int? = null,
+    private val genreId: Int? = null,
+    private val rating: Int? = null,
+    private val yearFrom: Int? = null,
+    private val yearTo: Int? = null,
+    private val keyword: String? = null
 ) :
     PageKeyedDataSource<Int, FilmItem>() {
 
@@ -24,7 +29,16 @@ class MovieByFiltersDataSource(
         Log.e("genreId", "inside request we have " + genreId.toString())
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getFilmsByFilters(genreId = genreId, page = params.key)
+            apiService.getFilmsByFilters(
+                countryId = countryId,
+                genreId = genreId,
+                ratingFrom = rating,
+                ratingTo = 10,
+                yearFrom = yearFrom,
+                yearTo = yearTo,
+                keyword = keyword,
+                page = params.key
+            )
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
@@ -52,7 +66,16 @@ class MovieByFiltersDataSource(
         Log.e("genreId", "inside request we have " + genreId.toString())
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-            apiService.getFilmsByFilters(genreId = genreId, page = page)
+            apiService.getFilmsByFilters(
+                countryId = countryId,
+                genreId = genreId,
+                ratingFrom = rating,
+                ratingTo = 10,
+                yearFrom = yearFrom,
+                yearTo = yearTo,
+                keyword = keyword,
+                page = page
+            )
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
