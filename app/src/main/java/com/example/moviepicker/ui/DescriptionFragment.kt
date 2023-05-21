@@ -72,7 +72,15 @@ class DescriptionFragment : Fragment() {
 
                 movieName.text = it.data.nameRu
                 textViewDescription.text = it.data.description
-                textViewRating.text = it.rating?.rating.toString()
+                textViewCountry.text = it.data.countries[0].country
+                textViewGenre.text = it.data.genres[0].genre
+//                if (it.rating?.rating != null) {
+//                    textViewRating.text = it.rating?.rating.toString()
+//                    ratingImage.visibility = View.VISIBLE
+//                } else {
+//                    ratingField.visibility = View.GONE
+//                }
+
                 val kinopoiskId = it.data.kinopoiskId
 
                 if (favouritesViewModel.savedMoviesId.contains(kinopoiskId)) {
@@ -84,7 +92,7 @@ class DescriptionFragment : Fragment() {
 
         viewModel.networkState.observe(viewLifecycleOwner) {
             with (binding) {
-                ratingField.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
+//                ratingField.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 saveButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 linkButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 progressBar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
