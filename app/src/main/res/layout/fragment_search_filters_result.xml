@@ -8,7 +8,7 @@
         tools:context=".ui.SearchFiltersResultFragment" android:background="#000000">
     <TextView
             android:id="@+id/textViewResults"
-            android:text="Результаты"
+            android:text="@string/results"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:layout_width="wrap_content"
