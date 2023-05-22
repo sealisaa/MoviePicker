@@ -9,7 +9,6 @@ import com.example.moviepicker.data.model.top.movie.TopType
 import com.example.moviepicker.data.model.movie.FilmsByFilters
 import com.example.moviepicker.data.api.KPApiClientService.Companion.GET_FILM
 import com.example.moviepicker.data.api.KPApiClientService.Companion.GET_TOP
-import com.example.moviepicker.data.api.KPApiClientService.Companion.MAIN_API_URL_V2_1
 import com.example.moviepicker.data.api.KPApiClientService.Companion.MAIN_API_URL_V2_2
 import io.reactivex.Single
 
@@ -31,7 +30,7 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
         return Single.fromCallable {
             val appends = appendTypes.joinToString()
             val result = kpApiClientService.request(
-                MAIN_API_URL_V2_1,
+                MAIN_API_URL_V2_2,
                 "$GET_FILM/$kinopoiskId?append_to_response=$appends",
                 Film::class.java
             )
@@ -46,7 +45,7 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
             val result = mutableListOf<Film>()
             for (id in list) {
                 kpApiClientService.request(
-                    MAIN_API_URL_V2_1,
+                    MAIN_API_URL_V2_2,
                     "$GET_FILM/$id?append_to_response=$appends",
                     Film::class.java
                 )?.let {

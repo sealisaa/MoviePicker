@@ -37,7 +37,6 @@ class MovieDetailsNetworkDataSource(
                         {
                             _downloadedMovieResponse.postValue(it)
                             _networkState.postValue(NetworkState.LOADED)
-                            Log.e("MovieDetailsNetworkDataSource", it.budget.toString())
                         },
                         {
                             _networkState.postValue(NetworkState.ERROR)
