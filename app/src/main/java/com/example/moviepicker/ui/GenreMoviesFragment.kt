@@ -2,6 +2,7 @@ package com.example.moviepicker.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,7 +91,7 @@ class GenreMoviesFragment : Fragment() {
     private fun getViewModel(genreId: Int?): MoviesByGenreViewModel {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return MoviesByGenreViewModel(movieRepository, genreId) as T
+                return MoviesByGenreViewModel(movieRepository, genreId = genreId) as T
             }
         })[MoviesByGenreViewModel::class.java]
     }
