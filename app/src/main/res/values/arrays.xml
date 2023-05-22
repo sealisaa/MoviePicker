@@ -14,5 +14,8 @@
         <item>1888</item>
         <item>2023</item>
     </array>
-
+    <array name="initial_slider_values2">
+        <item>0</item>
+        <item>10</item>
+    </array>
 </resources>

@@ -95,6 +95,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textViewRating"
         />
+<!--        <com.google.android.material.slider.Slider-->
+<!--            android:valueFrom="0"-->
+<!--            android:valueTo="10"-->
+<!--            android:max="10"-->
+<!--            android:min="0"-->
+<!--            android:value="2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="36dp" android:id="@+id/seekBarRating"-->
+<!--            android:progress="1"-->
+<!--            app:values="@array/initial_slider_values2" tools:ignore="SpeakableTextPresentCheck"/>-->
         <SeekBar
                 android:max="10"
                 android:min="0"
@@ -105,6 +115,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp" android:id="@+id/seekBarRating"
                 style="@style/Widget.AppCompat.SeekBar"/>
+<!--        <com.google.android.material.slider.RangeSlider-->
+<!--                android:thumb="@drawable/ic_seekbar_thumb"-->
+<!--                android:progressDrawable="@drawable/custom_seekbar"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:id="@+id/seekBarRating"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:valueFrom="0"-->
+<!--                android:valueTo="10"-->
+<!--                app:values="@array/initial_slider_values2" tools:ignore="SpeakableTextPresentCheck"/>-->
         <TextView
                 android:text="@string/year"
                 android:textColor="@color/white"

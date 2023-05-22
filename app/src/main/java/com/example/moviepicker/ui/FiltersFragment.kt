@@ -41,7 +41,7 @@ class FiltersFragment : Fragment() {
         binding.applyFiltersButton.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("keyword", binding.editTextKeyword.text.toString())
-            bundle.putInt("rating", binding.seekBarRating.progress)
+//            bundle.putInt("rating", binding.seekBarRating.progress)
             bundle.putInt("yearFrom", binding.seekBarYear.valueFrom.toInt())
             bundle.putInt("yearTo", binding.seekBarYear.valueTo.toInt())
             bundle.putString("countryName", binding.autoCompleteCountry.editText?.text.toString())
