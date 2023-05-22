@@ -12,9 +12,11 @@ internal class KPApiClientService(private val token: String, private val timeout
     companion object {
         const val AUTH_HEADER = "X-API-KEY"
         const val MAIN_API_URL_V2_2 = "https://kinopoiskapiunofficial.tech/api/v2.2"
+        const val MAIN_API_URL_V2_1 = "https://kinopoiskapiunofficial.tech/api/v2.1"
 
         const val GET_FILM = "/films"
         const val GET_TOP = "/top"
+        const val SEARCH_BY_KEYWORD = "/search-by-keyword"
     }
 
 

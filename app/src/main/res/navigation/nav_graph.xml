@@ -58,8 +58,8 @@
     <fragment
             android:id="@+id/filtersFragment" android:name="com.example.moviepicker.ui.FiltersFragment"
             android:label="fragment_filters" tools:layout="@layout/fragment_filters">
-        <action android:id="@+id/action_filtersFragment_to_searchResultFragment"
-                app:destination="@id/searchResultFragment"/>
+        <action android:id="@+id/action_filtersFragment_to_searchFiltersResultFragment"
+                app:destination="@id/searchFiltersResultFragment"/>
     </fragment>
     <fragment android:id="@+id/genreMoviesFragment" android:name="com.example.moviepicker.ui.GenreMoviesFragment"
               android:label="fragment_genre_movies" tools:layout="@layout/fragment_genre_movies">
@@ -68,9 +68,6 @@
                 app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
-            android:id="@+id/searchResultFragment" android:name="com.example.moviepicker.ui.SearchResultFragment"
-            android:label="fragment_search_result" tools:layout="@layout/fragment_search_result"/>
-    <fragment
             android:id="@+id/settingsFragment" android:name="com.example.moviepicker.ui.SettingsFragment"
             android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
     <fragment android:id="@+id/top250Fragment" android:name="com.example.moviepicker.ui.Top250Fragment"
@@ -78,5 +75,10 @@
         <action android:id="@+id/action_top250Fragment_to_descriptionFragment"
                 app:destination="@id/descriptionFragment"/>
     </fragment>
+    <fragment android:id="@+id/searchFiltersResultFragment"
+              android:name="com.example.moviepicker.ui.SearchFiltersResultFragment"
+              android:label="fragment_search_filters_result" tools:layout="@layout/fragment_search_filters_result"/>
+    <fragment android:id="@+id/searchResultFragment" android:name="com.example.moviepicker.ui.SearchResultFragment"
+              android:label="fragment_search_result" tools:layout="@layout/fragment_search_result"/>
 
 </navigation>

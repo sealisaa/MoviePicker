@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import api.service.*
 import com.example.moviepicker.MoviesByFiltersPagedListRepository
 import com.example.moviepicker.adapters.MoviesByGenrePagedListAdapter
-import com.example.moviepicker.data.MoviesByGenreViewModel
+import com.example.moviepicker.ui.viewmodel.MoviesByGenreViewModel
 import com.example.moviepicker.data.api.DBClient
 import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.databinding.FragmentGenreMoviesBinding
