@@ -65,7 +65,7 @@ class GenreMoviesFragment : Fragment() {
         viewModel.networkState.observe(viewLifecycleOwner) {
             binding.progressBar.visibility =
                 if (viewModel.listIsEmpty() && it == NetworkState.LOADING) View.VISIBLE else View.GONE
-            binding.textViewConnection.visibility =
+            binding.textViewConnectionGenreMovies.visibility =
                 if (viewModel.listIsEmpty() && it == NetworkState.ERROR) View.VISIBLE else View.GONE
             if (!viewModel.listIsEmpty()) {
                 movieAdapter.setNetworkState(it)

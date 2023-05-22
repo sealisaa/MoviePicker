@@ -44,7 +44,7 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
         holder.bindView(position)
         holder.movieCard.setOnClickListener {
             val bundle = Bundle()
-            bundle.putInt("movieId", favouriteMoviesList[position].data.kinopoiskId)
+            bundle.putInt("movieId", favouriteMoviesList[position].kinopoiskId)
             fragment.findNavController().navigate(R.id.descriptionFragment, bundle)
         }
     }
@@ -66,12 +66,14 @@ class FavouritesAdapter(val fragment: Fragment, var favouriteMoviesList: Mutable
         }
 
         fun bindView(position: Int) {
-            Glide.with(fragment).load(favouriteMoviesList[position].data.posterUrl).into(moviePoster)
-            movieTitle.text = favouriteMoviesList[position].data.nameRu
-//            val rating = favouriteMoviesList[position].data.ratingKinopoisk ?: " - "
+            Glide.with(fragment).load(favouriteMoviesList[position].posterUrl).into(moviePoster)
+            movieTitle.text = favouriteMoviesList[position].nameRu
+            movieRating.text =
+                (favouriteMoviesList[position].ratingKinopoisk ?: (favouriteMoviesList[position].ratingImdb
+                    ?: (favouriteMoviesList[position].ratingFilmCritics ?: "-"))).toString()
 //            Log.e("FavouritesAdapter", favouriteMoviesList[position].data.ratingKinopoisk.toString())
 //            movieRating.text = rating.toString()
-            movieYear.text = favouriteMoviesList[position].data.year
+            movieYear.text = favouriteMoviesList[position].year.toString()
 
         }
 

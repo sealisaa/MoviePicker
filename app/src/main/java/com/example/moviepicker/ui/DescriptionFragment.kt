@@ -30,7 +30,7 @@ class DescriptionFragment : Fragment() {
     private lateinit var viewModel: MovieViewModel
     private lateinit var movieRepository: FilmDetailsRepository
 
-    private val favouritesViewModel : FavouritesViewModel by activityViewModels()
+    private val favouritesViewModel: FavouritesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +56,7 @@ class DescriptionFragment : Fragment() {
                 }
                 try {
                     Paper.book().write("favouriteMovies", favouritesViewModel.savedMoviesId)
-                } catch (e : Exception) {
+                } catch (e: Exception) {
                     Log.e("DescriptionFragment", e.stackTraceToString())
                 }
             }
@@ -70,23 +70,28 @@ class DescriptionFragment : Fragment() {
         viewModel.movieDetails.observe(viewLifecycleOwner) {
             with(binding) {
 
-                Log.e("DescriptionFragment", it.toString())
-                movieName.text = it.data.nameRu
-                textViewDescription.text = it.data.description
-                textViewCountry.text = it.data.countries[0].country
-                textViewGenre.text = it.data.genres[0].genre
+                movieName.text = it.nameRu
+                textViewDescription.text = it.description
+                textViewCountry.text = it.countries[0].country
+                textViewGenre.text = it.genres[0].genre
+//                if (it.rating?.rating != null) {
+//                    textViewRating.text = it.rating?.rating.toString()
+//                    ratingImage.visibility = View.VISIBLE
+//                } else {
+//                    ratingField.visibility = View.GONE
+//                }
 
-                val kinopoiskId = it.data.kinopoiskId
+                val kinopoiskId = it.kinopoiskId
 
                 if (favouritesViewModel.savedMoviesId.contains(kinopoiskId)) {
                     saveButton.setImageResource(R.drawable.ic_unsave_button)
                 }
             }
-            Glide.with(this).load(it.data.posterUrl).into(binding.poster)
+            Glide.with(this).load(it.posterUrl).into(binding.poster)
         }
 
         viewModel.networkState.observe(viewLifecycleOwner) {
-            with (binding) {
+            with(binding) {
 //                ratingField.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 saveButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
                 linkButton.visibility = if (it == NetworkState.LOADED) View.VISIBLE else View.GONE
