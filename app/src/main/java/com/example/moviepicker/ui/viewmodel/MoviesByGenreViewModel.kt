@@ -1,4 +1,4 @@
-package com.example.moviepicker.data
+package com.example.moviepicker.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -70,16 +70,11 @@ class DescriptionFragment : Fragment() {
         viewModel.movieDetails.observe(viewLifecycleOwner) {
             with(binding) {
 
+                Log.e("DescriptionFragment", it.toString())
                 movieName.text = it.data.nameRu
                 textViewDescription.text = it.data.description
                 textViewCountry.text = it.data.countries[0].country
                 textViewGenre.text = it.data.genres[0].genre
-//                if (it.rating?.rating != null) {
-//                    textViewRating.text = it.rating?.rating.toString()
-//                    ratingImage.visibility = View.VISIBLE
-//                } else {
-//                    ratingField.visibility = View.GONE
-//                }
 
                 val kinopoiskId = it.data.kinopoiskId
 

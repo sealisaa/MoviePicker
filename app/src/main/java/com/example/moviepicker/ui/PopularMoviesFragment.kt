@@ -1,7 +1,6 @@
 package com.example.moviepicker.ui
 
 import android.content.res.Configuration
-import android.graphics.drawable.GradientDrawable.Orientation
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +10,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import api.service.KPApiService
-import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
-import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.adapters.MoviesPagedListAdapter
 import com.example.moviepicker.data.api.DBClient
+import com.example.moviepicker.data.repository.NetworkState
 import com.example.moviepicker.databinding.FragmentPopularMoviesBinding
+import com.example.moviepicker.ui.viewmodel.PopularMoviesViewModel
 
 class PopularMoviesFragment : Fragment() {
 
@@ -52,7 +51,7 @@ class PopularMoviesFragment : Fragment() {
                 if (viewType == movieAdapter.DATA_VIEW_TYPE) return 1    // DATA_VIEW_TYPE will occupy 1 out of 3 span
                 else return 3                                            // FOOTER_VIEW_TYPE will occupy all 3 span
             }
-        };
+        }
 
         with (binding) {
             popularMoviesRecyclerView.layoutManager = gridLayoutManager

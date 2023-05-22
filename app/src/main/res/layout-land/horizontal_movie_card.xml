@@ -31,7 +31,6 @@
                 android:layout_marginStart="120dp"
                 android:layout_marginTop="10dp"/>
         <TextView
-                android:text="Уэс Андерсон"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/directorName"
                 android:textColor="@color/white"

@@ -13,7 +13,7 @@ data class Common(
     var nameRu: String,
     var nameEn: String?,
     val webUrl: String,
-    val posterUrl: String,
+    val posterUrl: String?,
     val posterUrlPreview: String,
     val year: String,
     var filmLength: String?,

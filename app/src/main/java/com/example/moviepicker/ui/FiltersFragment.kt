@@ -1,16 +1,14 @@
 package com.example.moviepicker.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.moviepicker.R
 import com.example.moviepicker.databinding.FragmentFiltersBinding
-import java.util.logging.Logger
-import kotlin.math.roundToInt
 
 
 class FiltersFragment : Fragment() {
@@ -48,7 +46,7 @@ class FiltersFragment : Fragment() {
             bundle.putInt("yearTo", binding.seekBarYear.valueTo.toInt())
             bundle.putString("countryName", binding.autoCompleteCountry.editText?.text.toString())
             bundle.putString("genreName", binding.autoCompleteGenre.editText?.text.toString())
-            findNavController().navigate(R.id.action_filtersFragment_to_searchResultFragment, bundle)
+            findNavController().navigate(R.id.action_filtersFragment_to_searchFiltersResultFragment, bundle)
         }
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()

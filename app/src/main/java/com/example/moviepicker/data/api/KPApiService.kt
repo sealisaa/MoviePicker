@@ -11,6 +11,8 @@ import com.example.moviepicker.data.api.KPApiClientService.Companion.GET_FILM
 import com.example.moviepicker.data.api.KPApiClientService.Companion.GET_TOP
 import com.example.moviepicker.data.api.KPApiClientService.Companion.MAIN_API_URL_V2_1
 import com.example.moviepicker.data.api.KPApiClientService.Companion.MAIN_API_URL_V2_2
+import com.example.moviepicker.data.api.KPApiClientService.Companion.SEARCH_BY_KEYWORD
+import com.example.moviepicker.data.model.search.movie.keyword.SearchResult
 import io.reactivex.Single
 
 const val FIRST_PAGE = 1
@@ -66,7 +68,7 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
      * @param page page.
      */
     fun getTop(topType: TopType, page: Int = 1): Single<TopResult> {
-        return Single.fromCallable{
+        return Single.fromCallable {
             kpApiClientService.request(
                 MAIN_API_URL_V2_2,
                 "$GET_FILM$GET_TOP?type=$topType&page=$page",
@@ -75,19 +77,21 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
         }
     }
 
-//    /**
-//     * Returns search result by keyword.
-//     *
-//     * @param keyword keyword to search.
-//     * @param page page.
-//     */
-//    fun searchByKeyword(keyword: String, page: Int = 1): Result<SearchResult> {
-//        return kpApiClientService.request(
-//            MAIN_API_URL_V2_1,
-//            "$GET_FILM$SEARCH_BY_KEYWORD?keyword=$keyword&page=$page",
-//            SearchResult::class.java
-//        )
-//    }
+    /**
+     * Returns search result by keyword.
+     *
+     * @param keyword keyword to search.
+     * @param page page.
+     */
+    fun searchByKeyword(keyword: String, page: Int = 1): Single<SearchResult> {
+        return Single.fromCallable {
+            kpApiClientService.request(
+                MAIN_API_URL_V2_1,
+                "$GET_FILM$SEARCH_BY_KEYWORD?keyword=$keyword&page=$page",
+                SearchResult::class.java
+            )
+        }
+    }
 
 
     fun getFilmsByFilters(
@@ -100,13 +104,15 @@ class KPApiService(token: String, timeoutMs: Int = 15000) {
         keyword: String? = null,
         page: Int? = null
     ): Single<FilmsByFilters> {
-        Log.e("request by genre", MAIN_API_URL_V2_2 +
-            ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (genreId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
-                    "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
-                    "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
-                    "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(
-                1
-            ))
+        Log.d(
+            "request by genre", MAIN_API_URL_V2_2 +
+                    ("$GET_FILM?${if (countryId != null) "countries=${countryId}&" else ""}${if (genreId != null) "genres=${genreId}&" else ""}order=RATING&type=FILM&" +
+                            "${if (ratingFrom != null) "ratingFrom=${ratingFrom}&" else ""}${if (ratingTo != null) "ratingTo=${ratingTo}&" else ""}" +
+                            "${if (yearFrom != null) "yearFrom=${yearFrom}&" else ""}${if (yearTo != null) "yearTo=${yearTo}&" else ""}" +
+                            "${if (keyword != null) "keyword=${keyword}&" else ""}${if (page != null) "page=${page}&" else ""}").dropLast(
+                        1
+                    )
+        )
         return Single.fromCallable {
             kpApiClientService.request(
                 MAIN_API_URL_V2_2,
