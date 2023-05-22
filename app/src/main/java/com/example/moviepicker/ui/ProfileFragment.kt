@@ -87,22 +87,21 @@ class ProfileFragment : Fragment() {
         val exceptions = arrayListOf(11, 12, 13, 14)
         val textMovies =
             when (viewModel.savedMoviesId.size % 10) {
-                1 -> "Добавлен "
-                else -> "Добавлено "
+                1 -> getText(R.string.add)
+                else -> getText(R.string.added)
             }
         val textAdded =
             if (viewModel.savedMoviesId.size % 100 in exceptions) {
-                " фильмов"
+                getText(R.string.filmsElse)
             } else {
                 when (viewModel.savedMoviesId.size % 10) {
-                    1 -> " фильм"
-                    2, 3, 4 -> " фильма"
-                    else -> " фильмов"
+                    1 -> getText(R.string.films1)
+                    2, 3, 4 -> getText(R.string.films234)
+                    else -> getText(R.string.filmsElse)
                 }
             }
         return StringBuilder().append(textMovies)
             .append(viewModel.savedMoviesId.size)
             .append(textAdded).toString()
     }
-
 }

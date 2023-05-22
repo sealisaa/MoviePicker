@@ -124,28 +124,6 @@
                 android:valueFrom="1888"
                 android:valueTo="2023"
                 app:values="@array/initial_slider_values" tools:ignore="SpeakableTextPresentCheck"/>
-        <!--        <Spinner-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content" android:id="@+id/spinnerCountry"-->
-<!--                android:background="@drawable/ic_spinner_background"-->
-<!--                android:entries="@array/countries"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="14sp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                app:fontFamily="@font/roboto_bold"-->
-<!--                tools:ignore="TouchTargetSizeCheck"/>-->
-
-        <!--        <Spinner-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content" android:id="@+id/spinnerMPAA"-->
-<!--                android:background="@drawable/ic_spinner_background"-->
-<!--                android:entries="@array/mpaas"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="14sp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                app:fontFamily="@font/roboto_bold"-->
-<!--                tools:ignore="TouchTargetSizeCheck"/>-->
-
         <TextView
                 android:text="@string/key_word"
                 android:textColor="@color/white"
