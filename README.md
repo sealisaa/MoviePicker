@@ -2,19 +2,19 @@
 Андроид-приложение для поиска фильмов
 
 ## Главный экран
-Подборки популярных фильмов, Топ-250 по версии Кинопоиска, а также подборки фильмов по жанрам<br>
+Подборки популярных фильмов, Топ-250 по версии Кинопоиска, а также подборки фильмов по жанрам<br><br>
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/f81dfdd2-cc3a-4de7-aef0-98addd5e6cff)
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/52472b64-2c2c-4ddd-81e1-d61d59120ce9)
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/d02d3666-37c0-496f-8ca1-4f55112fd547)
 
 ## Поиск
-Поиск фильмов по названию и фильтрам<br>
+Поиск фильмов по названию и фильтрам<br><br>
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/b7751522-18ef-4e50-81f3-6df62ccd71d1)
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/30c07658-3852-4611-a360-77de63795053)
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/9191177a-e385-4470-a691-6678faeba1ab)
 
 ## Профиль
-Сохраненные фильмы отображаются в профиле<br>
+Сохраненные фильмы отображаются в профиле<br><br>
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/b29b1fca-bbd3-4972-adc8-5bbe92d8b9a3)
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/873e5e44-9d5b-4297-8efc-6f3ab939d696)
 ![image](https://github.com/sealisaa/MoviePicker/assets/49619174/b3ea5cca-7dd5-48fd-a7d6-16194225ad49)
